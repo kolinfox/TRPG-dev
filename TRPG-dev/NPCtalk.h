@@ -2,7 +2,7 @@
 #include<string>
 #include<time.h>
 #include"Quest.h"
-void SetColor(int f = 7, int b = 0)
+void SetColor(int f = 7, int b = 0)//æˆ‘æ˜¯å¤šçš„ç¨‹å¼ç¢¼
 {
 	unsigned short ForeColor = f + 16 * b;
 	HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -23,7 +23,7 @@ string Npc(int MapNumber)
 {
 	if (MapNumber == 1)
 	{
-		return "1.§@ªÌ   2.¤@ª½®`§Ú¥XBUGªº¾÷ÙTNPC";
+		return "1.ä½œè€…   2.ä¸€ç›´å®³æˆ‘å‡ºBUGçš„æ©Ÿæ°NPC";
 	}
 }
 void NpcTK(int MapNumber,int NPC)
@@ -34,14 +34,14 @@ void NpcTK(int MapNumber,int NPC)
 		{
 		case 1:
 			SetColor(5, 15);
-			NpcSay("¦­¦w ·PÁÂKolinFoxÅı§Ú­Ì¦³§ó§Ö³t«Ø¥ß¹ï¸Üªº¤èªk");
-			NpcSay("²Ä¤G¦æ´ú¸Õ ¦A¦¸·PÁÂª°¬ÂÁÉ°ª");
+			NpcSay("æ—©å®‰ æ„Ÿè¬KolinFoxè®“æˆ‘å€‘æœ‰æ›´å¿«é€Ÿå»ºç«‹å°è©±çš„æ–¹æ³•");
+			NpcSay("ç¬¬äºŒè¡Œæ¸¬è©¦ å†æ¬¡æ„Ÿè¬ç‹ç²è³½é«˜");
 			SetColor();
 			cout << endl << endl;
 			break;
 		case 2:
 			SetColor(5, 15);
-			NpcSay("¥i¤£¥i¥HÀ°§Ú®ø·À¤@°¦ÂàÂà³¾©M¤@°¦¤p¥Û©Ç? ¦Ó¥B±aµ¹§Ú¤@Áû¸H¥Û©M¤@®Ú¦Ğ¤ò");
+			NpcSay("å¯ä¸å¯ä»¥å¹«æˆ‘æ¶ˆæ»…ä¸€éš»è½‰è½‰é³¥å’Œä¸€éš»å°çŸ³æ€ª? è€Œä¸”å¸¶çµ¦æˆ‘ä¸€é¡†ç¢çŸ³å’Œä¸€æ ¹ç¾½æ¯›");
 			SetColor();
 			break;
 		}
