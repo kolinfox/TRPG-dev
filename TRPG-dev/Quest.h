@@ -6,7 +6,7 @@ ifstream qqe;
 struct NPC
 {
 	string NPCName;
-	string NPCQuest;//test
+	string NPCQuest;
 };
 NPC A;
 int a, b, c, d, e;
