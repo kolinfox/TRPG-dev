@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 using namespace std;
 struct MAP
@@ -11,17 +11,17 @@ int PrintMonster(int map)
 {
 	if (map == 0)
 	{
-		cout << "¿é¤J1»PÂàÂà³¾¾Ô°«   ¿é¤J2»P¤p¥Û©Ç¾Ô°«   ¿é¤J0ªð¦^\n";
+		cout << "è¼¸å…¥1èˆ‡è½‰è½‰é³¥æˆ°é¬¥   è¼¸å…¥2èˆ‡å°çŸ³æ€ªæˆ°é¬¥   è¼¸å…¥0è¿”å›ž\n";
 		return 1;
 	}
 	else if (map == 1)
 	{
-		cout << "³o¸Ì¨S¦³©Çª«\n";
+		cout << "é€™è£¡æ²’æœ‰æ€ªç‰©\n";
 		return 0;
 	}
 	else if (map == 2)
 	{
-		cout << "¿é¤J1»P­ô¥¬ªL¤p°­¾Ô°«   ¿é¤J2»P­ô¥¬ªL¾Ô¤h¾Ô°«   ¿é¤J0ªð¦^\n";
+		cout << "è¼¸å…¥1èˆ‡å“¥å¸ƒæž—å°é¬¼æˆ°é¬¥   è¼¸å…¥2èˆ‡å“¥å¸ƒæž—æˆ°å£«æˆ°é¬¥   è¼¸å…¥0è¿”å›ž\n";
 		return 1;
 	}
 
@@ -32,11 +32,11 @@ string Choose(int ck,int map)
 	{
 		if (ck == 1)
 		{
-			return "ÂàÂà³¾";
+			return "è½‰è½‰é³¥";
 		}
 		else if (ck == 2)
 		{
-			return "¤p¥Û©Ç";
+			return "å°çŸ³æ€ª";
 		}
 		else
 		{
@@ -47,11 +47,11 @@ string Choose(int ck,int map)
 	{
 		if (ck == 1)
 		{
-			return "­ô¥¬ªL¤p°­";
+			return "å“¥å¸ƒæž—å°é¬¼";
 		}
 		else if (ck == 2)
 		{
-			return "­ô¥¬ªL¾Ô¤h";
+			return "å“¥å¸ƒæž—æˆ°å£«";
 		}
 		else
 		{
@@ -63,17 +63,17 @@ string where(int MapNumber)
 {
 	if (MapNumber == 0)
 	{
-		MapData.MapName = "±´ÀIµo·½¦a(LV1~3)";
+		MapData.MapName = "æŽ¢éšªç™¼æºåœ°(LV1~3)";
 		return MapData.MapName;
 	}
 	else if (MapNumber == 1)
 	{
-		MapData.MapName = "¦ã§ø";
+		MapData.MapName = "è‰¾æ‘";
 		return MapData.MapName;
 	}
 	else if (MapNumber == 2)
 	{
-		MapData.MapName = "±´ÀI¤p®|(LV3~6)";
+		MapData.MapName = "æŽ¢éšªå°å¾‘(LV3~6)";
 		return MapData.MapName;
 	}
 	else

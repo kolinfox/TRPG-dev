@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 using namespace std;
 ofstream qwe;
@@ -30,7 +30,7 @@ void CountSave()
 }
 int Quest(string MapName, int NpcNumber)
 {
-	if (MapName == "¦ã§ø" and NpcNumber==2)
+	if (MapName == "è‰¾æ‘" and NpcNumber==2)
 	{
 		return 1;
 	}
@@ -78,7 +78,7 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			qwe.open("QuestSchedule4.txt", ios::out);
 			break;
 		}
-		if (Monster == "ÂàÂà³¾")
+		if (Monster == "è½‰è½‰é³¥")
 		{
 			a++;
 			if (a >= 1 and b >= 1)
@@ -89,7 +89,7 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			CountSave();
 			return 0;
 		}
-		if (Monster == "¤p¥Û©Ç")
+		if (Monster == "å°çŸ³æ€ª")
 		{
 			b++;
 			if (a >= 1 and b >= 1)
@@ -116,11 +116,11 @@ void QuestItem(int QuestNumber, string ItemName, int count)
 {
 	if (QuestNumber == 1)
 	{
-		if (ItemName == "¦Ğ¤ò")
+		if (ItemName == "ç¾½æ¯›")
 		{
 			aa = count;
 		}
-		else if (ItemName == "¸H¥Û")
+		else if (ItemName == "ç¢çŸ³")
 		{
 			bb = count;
 		}
@@ -128,11 +128,11 @@ void QuestItem(int QuestNumber, string ItemName, int count)
 }
 int DeleteItemCount(string name)
 {
-	if (name == "¸H¥Û")
+	if (name == "ç¢çŸ³")
 	{
 		return 1;
 	}
-	else if (name == "¦Ğ¤ò")
+	else if (name == "ç¾½æ¯›")
 	{
 		return 1;
 	}
@@ -161,7 +161,7 @@ int QuestItem(int QuestNumber)
 }
 int PrizeMoneyCheck(string map, int who)
 {
-	if (map == "¦ã§ø", 2)
+	if (map == "è‰¾æ‘", 2)
 	{
 		return 500;
 	}
@@ -172,7 +172,7 @@ int PrizeMoneyCheck(string map, int who)
 }
 int PrizeExpCheck(string map, int who)
 {
-	if (map == "¦ã§ø", 2)
+	if (map == "è‰¾æ‘", 2)
 	{
 		return 80;
 	}
@@ -183,7 +183,7 @@ int PrizeExpCheck(string map, int who)
 }
 string PrizeItemCheck(string map, int who,string playerjob)
 {
-	if (map == "¦ã§ø", 2)
+	if (map == "è‰¾æ‘", 2)
 	{
 		return "NULL";
 	}
