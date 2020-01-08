@@ -12,7 +12,7 @@ string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
 		return "高等劍";
 	}
 }
-/////////////////////////////////////////更改下面就好 測試 在測試
+/////////////////////////////////////////更改下面就好 測試 在測試 owowo
 int Damage(string ItemName)
 {
 	if (ItemName == "none")return 0;

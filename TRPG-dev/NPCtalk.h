@@ -12,7 +12,7 @@ using namespace std;
 void NpcSay(string a)
 {
 	string b;
-	for (int p = 0; p < a.length(); p+=2)
+	for (int p = 0; p < a.length(); p+=2) //owo
 	{
 		cout << b.assign(a, p, 2);
 		Sleep(85);
