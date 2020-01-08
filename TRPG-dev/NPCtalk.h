@@ -12,7 +12,7 @@ using namespace std;
 void NpcSay(string a)
 {
 	string b;
-	for (int p = 0; p < a.length(); p+=2) //owo
+	for (int p = 0; p < a.length(); p+=2) //owo owowow
 	{
 		cout << b.assign(a, p, 2);
 		Sleep(85);
@@ -23,7 +23,7 @@ string Npc(int MapNumber)
 {
 	if (MapNumber == 1)
 	{
-		return "1.§@ªÌ   2.¤@ª½®`§Ú¥XBUGªº¾÷ÙTNPC";
+		return "1.ä½œè€…   2.ä¸€ç›´å®³æˆ‘å‡ºBUGçš„æ©ŸæŽ°NPC";
 	}
 }
 void NpcTK(int MapNumber,int NPC)
@@ -34,14 +34,14 @@ void NpcTK(int MapNumber,int NPC)
 		{
 		case 1:
 			SetColor(5, 15);
-			NpcSay("¦­¦w ·PÁÂKolinFoxÅý§Ú­Ì¦³§ó§Ö³t«Ø¥ß¹ï¸Üªº¤èªk");
-			NpcSay("²Ä¤G¦æ´ú¸Õ ¦A¦¸·PÁÂª°¬ÂÁÉ°ª");
+			NpcSay("æ—©å®‰ æ„Ÿè¬KolinFoxè®“æˆ‘å€‘æœ‰æ›´å¿«é€Ÿå»ºç«‹å°è©±çš„æ–¹æ³•");
+			NpcSay("ç¬¬äºŒè¡Œæ¸¬è©¦ å†æ¬¡æ„Ÿè¬ç‹çŽ²è³½é«˜");
 			SetColor();
 			cout << endl << endl;
 			break;
 		case 2:
 			SetColor(5, 15);
-			NpcSay("¥i¤£¥i¥HÀ°§Ú®ø·À¤@°¦ÂàÂà³¾©M¤@°¦¤p¥Û©Ç? ¦Ó¥B±aµ¹§Ú¤@Áû¸H¥Û©M¤@®Ú¦Ð¤ò");
+			NpcSay("å¯ä¸å¯ä»¥å¹«æˆ‘æ¶ˆæ»…ä¸€éš»è½‰è½‰é³¥å’Œä¸€éš»å°çŸ³æ€ª? è€Œä¸”å¸¶çµ¦æˆ‘ä¸€é¡†ç¢ŽçŸ³å’Œä¸€æ ¹ç¾½æ¯›");
 			SetColor();
 			break;
 		}
