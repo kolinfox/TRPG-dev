@@ -14,7 +14,7 @@ void CountLoad()
 {
 	qqe >> a;
 	qqe >> b;
-	qqe >> c;
+	qqe >> c;//owo
 	qqe >> d;
 	qqe >> e;
 	qqe.close();
