@@ -26,13 +26,13 @@
     <ClInclude Include="MonsterData.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="Quest.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="item.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="NPCtalk.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
