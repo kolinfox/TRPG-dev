@@ -1,105 +1,105 @@
 #include<iostream>
 #include<string>
 using namespace std;
-string armr(string job,int damage,int str,int dex,int iq)//ä¸ç”¨ç†é€™è£¡
+string armr(string job,int damage,int str,int dex,int iq)//¤£¥Î²z³o¸Ì
 {
 	if (job == "fighter" and damage  == 3 and str == 5)
 	{
-		return "æœ¨åŠ";
+		return "¤ì¼C";
 	}
 	if (job == "fighter" and damage == 5 and str == 7)
 	{
-		return "é«˜ç­‰åŠ";
+		return "°ªµ¥¼C";
 	}
 }
-/////////////////////////////////////////æ›´æ”¹ä¸‹é¢å°±å¥½
-int Damage(string ItemName)//æˆ‘æ˜¯å¤šçš„ç¨‹å¼ç¢¼
+/////////////////////////////////////////§ó§ï¤U­±´N¦n
+int Damage(string ItemName)
 {
 	if (ItemName == "none")return 0;
-	if (ItemName == "åŒ•é¦–")return 30;
-	if (ItemName == "æœ¨æ–")return 20;
-	if (ItemName == "æœ¨å¼“") return 30;
-	if (ItemName == "æœ¨åŠ") return 35;
-	if (ItemName == "é«˜ç­‰åŠ") return 50;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 0;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 0;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 0;
+	if (ItemName == "¤P­º")return 30;
+	if (ItemName == "¤ì§ú")return 20;
+	if (ItemName == "¤ì¤}") return 30;
+	if (ItemName == "¤ì¼C") return 35;
+	if (ItemName == "°ªµ¥¼C") return 50;
+	if (ItemName == "·s¤â¤W¦ç") return 0;
+	if (ItemName == "·s¤â¿Ç¤l") return 0;
+	if (ItemName == "°ª¯ÅÀY²¯") return 0;
 }
 int Def(string ItemName)
 {
 	if (ItemName == "none")return 0;
-	if (ItemName == "æœ¨æ–")return 0;
-	if (ItemName == "æœ¨å¼“") return 0;
-	if (ItemName == "æœ¨åŠ") return 0;
-	if (ItemName == "åŒ•é¦–")return 0;
-	if (ItemName == "é«˜ç­‰åŠ") return 0;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 50;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 35;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 150;
+	if (ItemName == "¤ì§ú")return 0;
+	if (ItemName == "¤ì¤}") return 0;
+	if (ItemName == "¤ì¼C") return 0;
+	if (ItemName == "¤P­º")return 0;
+	if (ItemName == "°ªµ¥¼C") return 0;
+	if (ItemName == "·s¤â¤W¦ç") return 50;
+	if (ItemName == "·s¤â¿Ç¤l") return 35;
+	if (ItemName == "°ª¯ÅÀY²¯") return 150;
 }
 int Str(string ItemName)
 {
 
 	if (ItemName == "none")return 0;
-	if (ItemName == "åŒ•é¦–")return 0;
-	if (ItemName == "æœ¨æ–")return 0;
-	if (ItemName == "æœ¨å¼“") return 0;
-	if (ItemName == "æœ¨åŠ") return 12;
-	if (ItemName == "é«˜ç­‰åŠ") return 20;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 0;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 0;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 0;
+	if (ItemName == "¤P­º")return 0;
+	if (ItemName == "¤ì§ú")return 0;
+	if (ItemName == "¤ì¤}") return 0;
+	if (ItemName == "¤ì¼C") return 12;
+	if (ItemName == "°ªµ¥¼C") return 20;
+	if (ItemName == "·s¤â¤W¦ç") return 0;
+	if (ItemName == "·s¤â¿Ç¤l") return 0;
+	if (ItemName == "°ª¯ÅÀY²¯") return 0;
 }
 int Dex(string ItemName)
 {	
-	if (ItemName == "æœ¨æ–")return 0;
+	if (ItemName == "¤ì§ú")return 0;
 	if (ItemName == "none")return 0;
-	if (ItemName == "åŒ•é¦–")return 0;
-	if (ItemName == "æœ¨å¼“") return 16;
-	if (ItemName == "æœ¨åŠ") return 0;
-	if (ItemName == "é«˜ç­‰åŠ") return 0;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 0;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 0;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 0;
+	if (ItemName == "¤P­º")return 0;
+	if (ItemName == "¤ì¤}") return 16;
+	if (ItemName == "¤ì¼C") return 0;
+	if (ItemName == "°ªµ¥¼C") return 0;
+	if (ItemName == "·s¤â¤W¦ç") return 0;
+	if (ItemName == "·s¤â¿Ç¤l") return 0;
+	if (ItemName == "°ª¯ÅÀY²¯") return 0;
 }
 int Int(string ItemName)
 {
-	if (ItemName == "æœ¨æ–")return 20;
+	if (ItemName == "¤ì§ú")return 20;
 	if (ItemName == "none")return 0;
-	if (ItemName == "åŒ•é¦–")return 0;
-	if (ItemName == "æœ¨å¼“") return 0;
-	if (ItemName == "æœ¨åŠ") return 0;
-	if (ItemName == "é«˜ç­‰åŠ") return 0;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 0;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 0;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 0;
+	if (ItemName == "¤P­º")return 0;
+	if (ItemName == "¤ì¤}") return 0;
+	if (ItemName == "¤ì¼C") return 0;
+	if (ItemName == "°ªµ¥¼C") return 0;
+	if (ItemName == "·s¤â¤W¦ç") return 0;
+	if (ItemName == "·s¤â¿Ç¤l") return 0;
+	if (ItemName == "°ª¯ÅÀY²¯") return 0;
 }
 int Luk(string ItemName)
 {
-	if (ItemName == "æœ¨æ–")return 0;
-	if (ItemName == "åŒ•é¦–")return 16;
-	if (ItemName == "æœ¨å¼“") return 0;
+	if (ItemName == "¤ì§ú")return 0;
+	if (ItemName == "¤P­º")return 16;
+	if (ItemName == "¤ì¤}") return 0;
 	if (ItemName == "none")return 0;
-	if (ItemName == "æœ¨åŠ") return 0;
-	if (ItemName == "é«˜ç­‰åŠ") return 0;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 0;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 0;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 0;
+	if (ItemName == "¤ì¼C") return 0;
+	if (ItemName == "°ªµ¥¼C") return 0;
+	if (ItemName == "·s¤â¤W¦ç") return 0;
+	if (ItemName == "·s¤â¿Ç¤l") return 0;
+	if (ItemName == "°ª¯ÅÀY²¯") return 0;
 }
 int check(string ItemName)
 {
-	if (ItemName == "æœ¨æ–")return 0;
-	if (ItemName == "åŒ•é¦–")return 0;
-	if (ItemName == "æœ¨å¼“") return 0;
-	if (ItemName == "æœ¨åŠ") return 0;
-	if (ItemName == "é«˜ç­‰åŠ") return 0;
-	if (ItemName == "æ–°æ‰‹ä¸Šè¡£") return 2;
-	if (ItemName == "æ–°æ‰‹è¤²å­") return 3;
-	if (ItemName == "é«˜ç´šé ­ç›”") return 1;
+	if (ItemName == "¤ì§ú")return 0;
+	if (ItemName == "¤P­º")return 0;
+	if (ItemName == "¤ì¤}") return 0;
+	if (ItemName == "¤ì¼C") return 0;
+	if (ItemName == "°ªµ¥¼C") return 0;
+	if (ItemName == "·s¤â¤W¦ç") return 2;
+	if (ItemName == "·s¤â¿Ç¤l") return 3;
+	if (ItemName == "°ª¯ÅÀY²¯") return 1;
 }
 int UseItem(string Item)
 {
-	if (Item == "è‰¾è‰")
+	if (Item == "¦ã¯ó")
 	{
 		return 1;
 	}
@@ -110,7 +110,7 @@ int UseItem(string Item)
 }
 int ItemHp(string Item)
 {
-	if (Item == "è‰¾è‰")
+	if (Item == "¦ã¯ó")
 	{
 		return 50;
 	}

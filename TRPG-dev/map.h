@@ -7,7 +7,7 @@ struct MAP
 	string MonsterName;
 };
 MAP MapData;
-int PrintMonster(int map)//我是多的程式碼
+int PrintMonster(int map)
 {
 	if (map == 0)
 	{
