@@ -5,7 +5,7 @@ using namespace std;
 int p;
 int HisHP(string Monster)
 {
-	if (Monster == "小石怪")
+	if (Monster == "小石怪")//我是多的程式碼
 	{
 		return 135;
 	}
