@@ -6,7 +6,7 @@ ifstream qqe;
 struct NPC
 {
 	string NPCName;
-	string NPCQuest;//test
+	string NPCQuest;//我是多的程式碼
 };
 NPC A;
 int a, b, c, d, e;
@@ -14,7 +14,7 @@ void CountLoad()
 {
 	qqe >> a;
 	qqe >> b;
-	qqe >> c;//owo
+	qqe >> c;
 	qqe >> d;
 	qqe >> e;
 	qqe.close();
