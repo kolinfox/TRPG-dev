@@ -6,7 +6,7 @@ ifstream qqe;
 struct NPC
 {
 	string NPCName;
-	string NPCQuest;//我是多的程式碼
+	string NPCQuest;
 };
 NPC A;
 int a, b, c, d, e;

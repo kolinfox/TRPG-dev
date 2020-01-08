@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<string>
 using namespace std;
 string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
@@ -13,7 +13,7 @@ string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
 	}
 }
 /////////////////////////////////////////更改下面就好
-int Damage(string ItemName)//我是多的程式碼
+int Damage(string ItemName)
 {
 	if (ItemName == "none")return 0;
 	if (ItemName == "匕首")return 30;

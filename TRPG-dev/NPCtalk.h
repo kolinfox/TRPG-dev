@@ -1,8 +1,8 @@
-#include<iostream>
+﻿#include<iostream>
 #include<string>
 #include<time.h>
 #include"Quest.h"
-void SetColor(int f = 7, int b = 0)//我是多的程式碼
+void SetColor(int f = 7, int b = 0)
 {
 	unsigned short ForeColor = f + 16 * b;
 	HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
