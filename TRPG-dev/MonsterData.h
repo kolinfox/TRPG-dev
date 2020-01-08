@@ -1,61 +1,61 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<time.h>
 using namespace std;
 int p;
 int HisHP(string Monster)
 {
-	if (Monster == "¤p¥Û©Ç")
+	if (Monster == "å°çŸ³æ€ª")
 	{
 		return 135;
 	}
-	else if (Monster == "ÂàÂà³¾")
+	else if (Monster == "è½‰è½‰é³¥")
 	{
 		return 90;
 	}
-	else if (Monster == "­ô¥¬ªL¤p°­")
+	else if (Monster == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return 140;
 	}
-	else if (Monster == "­ô¥¬ªL¾Ô¤h")
+	else if (Monster == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		return 177;
 	}
 }
 int HisDamage(string Monster)
 {
-	if (Monster == "¤p¥Û©Ç")
+	if (Monster == "å°çŸ³æ€ª")
 	{
 		return 12;
 	}
-	else if (Monster == "ÂàÂà³¾")
+	else if (Monster == "è½‰è½‰é³¥")
 	{
 		return 9;
 	}
-	else if (Monster == "­ô¥¬ªL¤p°­")
+	else if (Monster == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return 15;
 	}
-	else if (Monster == "­ô¥¬ªL¾Ô¤h")
+	else if (Monster == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		return 18;
 	}
 }
 int HisEXP(string Monster)
 {
-	if (Monster == "¤p¥Û©Ç")
+	if (Monster == "å°çŸ³æ€ª")
 	{
 		return 35;
 	}
-	else if (Monster == "ÂàÂà³¾")
+	else if (Monster == "è½‰è½‰é³¥")
 	{
 		return 30;
 	}
-	else if (Monster == "­ô¥¬ªL¤p°­")
+	else if (Monster == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return 35;
 	}
-	else if (Monster == "­ô¥¬ªL¾Ô¤h")
+	else if (Monster == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		return 40;
 	}
@@ -64,11 +64,11 @@ int HisSkill(string Monster)
 {
 	srand(time(NULL));
 	p = ((rand() * rand()) % 1648) % 100;
-	if (Monster == "¤p¥Û©Ç")
+	if (Monster == "å°çŸ³æ€ª")
 	{
 		return 0;
 	}
-	else if (Monster == "ÂàÂà³¾")
+	else if (Monster == "è½‰è½‰é³¥")
 	{
 		if (p >= 20)
 		{
@@ -79,11 +79,11 @@ int HisSkill(string Monster)
 			return 1;
 		}
 	}
-	else if (Monster == "­ô¥¬ªL¤p°­")
+	else if (Monster == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return 0;
 	}
-	else if (Monster == "­ô¥¬ªL¾Ô¤h")
+	else if (Monster == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		if (p >= 20)
 		{
@@ -97,30 +97,30 @@ int HisSkill(string Monster)
 }
 int LV(string MonsterName)
 {
-	if (MonsterName == "ÂàÂà³¾")
+	if (MonsterName == "è½‰è½‰é³¥")
 	{
 		return 1;
 	}
-	else if (MonsterName == "¤p¥Û©Ç")
+	else if (MonsterName == "å°çŸ³æ€ª")
 	{
 		return 2;
 	}
-	else if (MonsterName == "­ô¥¬ªL¤p°­")
+	else if (MonsterName == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return 3;
 	}
-	else if (MonsterName == "­ô¥¬ªL¾Ô¤h")
+	else if (MonsterName == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		return 4;
 	}
 }
 float GetSkillDamage(string HisSkillName)
 {
-	if (HisSkillName == "¤G³s°Ö")
+	if (HisSkillName == "äºŒé€£å•„")
 	{
 		return 2;
 	}
-	if (HisSkillName == "­«´¨")
+	if (HisSkillName == "é‡æ¶")
 	{
 		return 1.5;
 	}
@@ -129,7 +129,7 @@ int SpecialEffect(string Monster)
 {
 	srand(time(NULL));
 	p = ((rand() * rand()) % 1608) % 100;
-	//if (Monster == "ÂàÂà³¾")
+	//if (Monster == "è½‰è½‰é³¥")
 	//{
 	//	if (p < 10)
 	//	{
@@ -143,72 +143,72 @@ int SpecialEffect(string Monster)
 }
 string HisSkillName(string Monster)
 {
-	if (Monster == "¤p¥Û©Ç")
+	if (Monster == "å°çŸ³æ€ª")
 	{
 		return "none";
 	}
-	else if (Monster == "ÂàÂà³¾")
+	else if (Monster == "è½‰è½‰é³¥")
 	{
-		return "¤G³s°Ö";
+		return "äºŒé€£å•„";
 	}
-	else if (Monster == "­ô¥¬ªL¤p°­")
+	else if (Monster == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		return "none";
 	}
-	else if (Monster == "­ô¥¬ªL¾Ô¤h")
+	else if (Monster == "å“¥å¸ƒæ—æˆ°å£«")
 	{
-		return "­«´¨";
+		return "é‡æ¶";
 	}
 }
 string GetPrize(string MonsterName)
 {
 	int p;
-	if (MonsterName == "ÂàÂà³¾")
+	if (MonsterName == "è½‰è½‰é³¥")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 20)
 		{
-			cout << "§AÀò±o¤F¦Ğ¤ò";
-			return "¦Ğ¤ò";
+			cout << "ä½ ç²å¾—äº†ç¾½æ¯›";
+			return "ç¾½æ¯›";
 		}
 		else
 		{
 			return "none";
 		}
 	}
-	else if (MonsterName == "¤p¥Û©Ç")
+	else if (MonsterName == "å°çŸ³æ€ª")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 20)
 		{
-			cout << "§AÀò±o¤F¸H¥Û";
-			return "¸H¥Û";
+			cout << "ä½ ç²å¾—äº†ç¢çŸ³";
+			return "ç¢çŸ³";
 		}
 		else
 		{
 			return "none";
 		}
 	}
-	else if (MonsterName == "­ô¥¬ªL¤p°­")
+	else if (MonsterName == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 20)
 		{
-			cout << "§AÀò±o¤F­ô¥¬ªL¹ÏÄË";
-			return "­ô¥¬ªL¹ÏÄË";
+			cout << "ä½ ç²å¾—äº†å“¥å¸ƒæ—åœ–é¨°";
+			return "å“¥å¸ƒæ—åœ–é¨°";
 		}
 		else
 		{
 			return "none";
 		}
 	}
-	else if (MonsterName == "­ô¥¬ªL¾Ô¤h")
+	else if (MonsterName == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 20)
 		{
-			cout << "§AÀò±o¤F­ô¥¬ªL¹ÏÄË";
-			return "­ô¥¬ªL¹ÏÄË";
+			cout << "ä½ ç²å¾—äº†å“¥å¸ƒæ—åœ–é¨°";
+			return "å“¥å¸ƒæ—åœ–é¨°";
 		}
 		else
 		{
@@ -219,7 +219,7 @@ string GetPrize(string MonsterName)
 int GetCount(string MonsterName)
 {
 	int p;
-	if (MonsterName == "ÂàÂà³¾")
+	if (MonsterName == "è½‰è½‰é³¥")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 50)
@@ -233,7 +233,7 @@ int GetCount(string MonsterName)
 			return 1;
 		}
 	}
-	else if (MonsterName == "¤p¥Û©Ç")
+	else if (MonsterName == "å°çŸ³æ€ª")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 50)
@@ -247,7 +247,7 @@ int GetCount(string MonsterName)
 			return 1;
 		}
 	}
-	else if (MonsterName == "­ô¥¬ªL¤p°­")
+	else if (MonsterName == "å“¥å¸ƒæ—å°é¬¼")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 50)
@@ -261,7 +261,7 @@ int GetCount(string MonsterName)
 			return 1;
 		}
 	}
-	else if (MonsterName == "­ô¥¬ªL¾Ô¤h")
+	else if (MonsterName == "å“¥å¸ƒæ—æˆ°å£«")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 50)

@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<string>
 using namespace std;
 ofstream qwe;
@@ -6,7 +6,7 @@ ifstream qqe;
 struct NPC
 {
 	string NPCName;
-	string NPCQuest;
+	string NPCQuest;//test
 };
 NPC A;
 int a, b, c, d, e;

@@ -20,19 +20,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="item.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="map.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="MonsterData.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="NPCtalk.h">
+    <ClInclude Include="Quest.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="Quest.h">
+    <ClInclude Include="item.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCtalk.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
