@@ -87,7 +87,7 @@ int npc(int map)
 	{
 		return 0;
 	}
-	else if (map == 1)
+	else if (map == 1)//owo
 	{
 		return 1;
 	}
