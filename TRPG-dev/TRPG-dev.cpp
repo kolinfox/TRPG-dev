@@ -138,7 +138,7 @@ void ingame()
 			player.realattack = player.attack + (player.str / 4) + player.basicStr;
 			player.bdef = (player.str / 3) + player.level * 3;
 			player.def = player.bdef + player.defsum;
-			player.HP = 500 + (player.level - 1) * 180;
+			player.HP = 450 + (player.level - 1) * 180;
 			player.MP = 100 + (player.level - 1) * 50;
 		}
 		if (player.job == "shoter")
@@ -147,7 +147,7 @@ void ingame()
 			player.realattack = player.attack + (player.dex / 4) + player.basicDex;
 			player.bdef = (player.dex / 4) + player.level * 2;
 			player.def = player.bdef + player.defsum;
-			player.HP = 350 + (player.level - 1) * 130;
+			player.HP = 300 + (player.level - 1) * 130;
 			player.MP = 100 + (player.level - 1) * 50;
 		}
 		if (player.job == "magic")
@@ -156,7 +156,7 @@ void ingame()
 			player.realattack = player.attack + (player.iq / 5) + player.basiciq;
 			player.bdef = player.iq / 5 + player.level * 2;
 			player.def = player.bdef + player.defsum;
-			player.HP = 200 + (player.level - 1) * 100;
+			player.HP = 250 + (player.level - 1) * 100;
 			player.MP = 300 + (player.level - 1) * 150;
 		}
 		if (player.job == "ninja")
