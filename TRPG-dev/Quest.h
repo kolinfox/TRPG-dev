@@ -61,9 +61,7 @@ void loadQuest(int s)
 }
 int QuestReturn(int QuestNumber, string Monster,int s)
 {
-	if (QuestNumber == 1)
-	{
-		switch (s)
+        switch (s)
 		{
 		case 1:
 			qwe.open("QuestSchedule.txt", ios::out);
@@ -78,6 +76,8 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			qwe.open("QuestSchedule4.txt", ios::out);
 			break;
 		}
+	if (QuestNumber == 1)
+	{
 		if (Monster == "轉轉鳥")
 		{
 			a++;
