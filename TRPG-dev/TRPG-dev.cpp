@@ -52,6 +52,51 @@ struct Character
 	int basiciq = 0;
 };
 Character player;
+int ps() //調整數字位數和空格的影響
+{
+	if (player.fightingHP >= 100000)
+	{
+		return -3;
+	}
+	else if (player.fightingHP >= 10000)
+	{
+		return -2;
+	}
+	else if (player.fightingHP >= 1000)
+	{
+		return -1;
+	}
+	else if (player.fightingHP >= 100)
+	{
+		return 0;
+	}
+	else if (player.fightingHP >= 10)
+	{
+		return 1;
+	}
+}
+void HpLine(float y,float z,double MonsterHP,string Monster) //輸出血量和調整空格
+{
+	int f;
+	y = (player.fightingHP * 100) / player.HP;
+	z = (MonsterHP * 100) / HisHP(Monster);
+	f = 15;
+	for (int gg = 0; gg < y / 10; gg++)
+	{
+		SetColor(11, 0);
+		cout << "▓";
+		SetColor();
+		f--;
+	}
+	cout << setw(2*f-2);
+	for (int gg = 0; gg < z / 10; gg++)
+	{
+		SetColor(12, 0);
+		cout << "▓";
+		SetColor();
+	}
+	cout << setw(8);
+}
 void save()
 {
 	switch (SaveNumber)
@@ -351,28 +396,9 @@ void ingame()
 					MonsterHP = HisHP(Monster);
 					MonsterD = HisDamage(Monster);
 					float y = (player.fightingHP * 100) / player.HP;
-					int f = 14;
-					for (int gg = 0; gg <= y / 7; gg++)
-					{
-						SetColor(0, 11);
-						cout << " ";
-						SetColor();
-						f--;
-					}
-					for (int xx = 0; xx <= f; xx++)
-					{
-						cout << " ";
-					}
-					cout << "      ";
-					float z = (MonsterHP * 100) / HisHP(Monster);
-					for (int gg = 0; gg <= z / 7; gg++)
-					{
-						SetColor(0, 12);
-						cout << " ";
-						SetColor();
-					}
+					HpLine(y, z, MonsterHP, Monster);
 					cout << endl;
-					cout << "你的血量" << player.fightingHP << "         對手的血量:" << MonsterHP << endl << endl;
+					cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
 					int dag = int(player.realattack + ((((rand() * 76 - 475) % 369 * 478) % player.realattack) * 0.345));
 					cout << "對手受到" << dag << "點傷害     \n\n";
 					MonsterHP -= dag;
@@ -438,27 +464,9 @@ void ingame()
 					{
 						float y = (player.fightingHP * 100) / player.HP;
 						float z = (MonsterHP * 100) / HisHP(Monster);
-						int f = 14;
-						for (int gg = 0; gg <= y / 7; gg++)
-						{
-							SetColor(0, 11);
-							cout << " ";
-							SetColor();
-							f--;
-						}
-						for (int xx = 0; xx <= f; xx++)
-						{
-							cout << " ";
-						}
-						cout << "      ";
-						for (int gg = 0; gg <= z / 7; gg++)
-						{
-							SetColor(0, 12);
-							cout << " ";
-							SetColor();
-						}
+						HpLine(y, z, MonsterHP, Monster);
 						cout << endl;
-						cout << "你的血量:" << player.fightingHP << "        對手的血量:" << MonsterHP << endl << endl;
+						cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
 						float MonsterDamage = MonsterD + (((rand() * 76 - 475) % 369 * 478) % MonsterD) * 0.345;
 						if (HisSkill(Monster) == 1)
 						{
@@ -500,35 +508,17 @@ void ingame()
 						SetColor();
 						y = (player.fightingHP * 100) / player.HP;
 						z = (MonsterHP * 100) / HisHP(Monster);
-						f = 14;
-						for (int gg = 0; gg <= y / 7; gg++)
-						{
-							SetColor(0, 11);
-							cout << " ";
-							SetColor();
-							f--;
-						}
-						for (int xx = 0; xx <= f; xx++)
-						{
-							cout << " ";
-						}
-						cout << "      ";
-						for (int gg = 0; gg <= z / 7; gg++)
-						{
-							SetColor(0, 12);
-							cout << " ";
-							SetColor();
-						}
+						HpLine(y, z, MonsterHP, Monster);
 						cout << endl;
 						if (player.fightingHP <= 0)
 						{
-							cout << "你的血量:" << "0" << "        對手的血量:" << MonsterHP << endl;
+							cout << "你的血量:" << "0"<< setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
 							cout << "死亡\n";
 							player.fightingHP = player.HP;
 							save();
 							break;
 						}
-						cout << "你的血量:" << player.fightingHP << "        對手的血量:" << MonsterHP << endl << endl;
+						cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
 						Sleep(750);
 						int dag = int(player.realattack + (rand() % player.realattack) * 0.345);
 						if (dizzy == 1)
@@ -545,7 +535,7 @@ void ingame()
 						}
 						else if (player.fightingHP <= 0)
 						{
-							cout << "你的血量:" << "0" << "        對手的血量:" << MonsterHP << endl;
+							cout << "你的血量:" << "0" << "              對手的血量:" << MonsterHP << endl;
 							cout << "死亡\n";
 							player.fightingHP = player.HP;
 							save();
@@ -553,8 +543,12 @@ void ingame()
 						}
 						else if (MonsterHP <= 0)
 						{
-							cout << "你的血量:" << player.fightingHP << "        對手的血量:" << "0" << endl;
-							cout << "勝利\n";
+							y = (player.fightingHP * 100) / player.HP;
+							z = (MonsterHP * 100) / HisHP(Monster);
+							HpLine(y, z, MonsterHP, Monster);
+							cout << endl;
+							cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:0" << endl << endl;
+							cout << "\n勝利\n\n";
 							player.exp = player.exp + HisEXP(Monster);
 							string Prize;
 							Prize = GetPrize(Monster);
@@ -807,7 +801,7 @@ int main()
 			if (p == 1)
 			{
 				player.job = "fighter";
-				player.HP = 500;
+				player.HP = 450;
 				player.MP = 100;
 				player.Armr = armr(player.job, 3, 5, 0, 0);
 				player.attack = 35;
@@ -840,7 +834,7 @@ int main()
 			{
 				player.Armr = "木杖";
 				player.job = "magic";
-				player.HP = 200;
+				player.HP = 250;
 				player.fightingHP = player.HP;
 				player.MP = 300;
 				clothitem[1] = player.Armr;

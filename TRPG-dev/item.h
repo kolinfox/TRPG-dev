@@ -33,8 +33,8 @@ int Def(string ItemName)
 	if (ItemName == "木劍") return 0;
 	if (ItemName == "匕首")return 0;
 	if (ItemName == "高等劍") return 0;
-	if (ItemName == "新手上衣") return 50;
-	if (ItemName == "新手褲子") return 35;
+	if (ItemName == "新手上衣") return 35;
+	if (ItemName == "新手褲子") return 20;
 	if (ItemName == "高級頭盔") return 150;
 }
 int Str(string ItemName)
