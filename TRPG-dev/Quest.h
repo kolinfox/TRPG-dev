@@ -126,19 +126,22 @@ void QuestItem(int QuestNumber, string ItemName, int count)
 		}
 	}
 }
-int DeleteItemCount(string name)
+int DeleteItemCount(string name,int QuestNumber)
 {
-	if (name == "碎石")
+	if (QuestNumber == 1)
 	{
-		return 1;
-	}
-	else if (name == "羽毛")
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
+		if (name == "碎石")
+		{
+			return 1;
+		}
+		else if (name == "羽毛")
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }
 int QuestItem(int QuestNumber)

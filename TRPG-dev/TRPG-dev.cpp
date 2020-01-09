@@ -239,7 +239,7 @@ void ingame()
 					cout << "\n獲得報酬!\n\n";
 					for (int gg = 0; bag[gg] != "none"; gg++)
 					{
-						bagcount[gg] -= DeleteItemCount(bag[gg]);
+						bagcount[gg] -= DeleteItemCount(bag[gg],whatsquest);
 					}
 					whatsquest = -1;
 					QuestCheck = 0;
