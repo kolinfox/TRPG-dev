@@ -217,7 +217,6 @@ void ingame()
 		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入其他按鍵離開" << endl;
 		cout << "\n目前所在地:" << where(map) << endl << endl;
 		save();
-		cout << doneornot;
 		if (owo == 1)
 		{
 			save();
@@ -327,7 +326,11 @@ void ingame()
 						NpcTK(map, ckk, w);
 						//shop
 					}
-					else if (doneornot == 1 and whatsquest != AllQuest[Quest(where(map), ckk)])
+					else if (QuestCheck==1 and whatsquest != AllQuest[Quest(where(map), ckk)])
+					{
+						cout << "\n請先完成目前所接的任務\n\n";
+					}
+					else if (doneornot == 1 and whatsquest != AllQuest[Quest(where(map), ckk)] and AllQuest[Quest(where(map), ckk)]==0)
 					{
 						NpcTK(map, ckk, 99);
 					}
