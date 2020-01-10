@@ -34,6 +34,10 @@ int Quest(string MapName, int NpcNumber)
 	{
 		return 1;
 	}
+	else if (MapName == "艾村" and NpcNumber == 3)
+	{
+		return 2;
+	}
 	else
 	{
 		return 0;
@@ -109,6 +113,7 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			return 1;
 		}
 	}
+	if (QuestNumber == 2)return 1;
 	if (QuestNumber == 0)return 0;
 }
 int aa=0, bb=0, cc=0, dd=0,ee=0;
@@ -123,6 +128,13 @@ void QuestItem(int QuestNumber, string ItemName, int count)
 		else if (ItemName == "碎石")
 		{
 			bb = count;
+		}
+	}
+	else if (QuestNumber == 2)
+	{
+		if (ItemName == "商人的錢包")
+		{
+			aa = count;
 		}
 	}
 }
@@ -143,6 +155,10 @@ int DeleteItemCount(string name,int QuestNumber)
 			return 0;
 		}
 	}
+	if (QuestNumber == 2)
+	{
+		return 1;
+	}
 }
 int QuestItem(int QuestNumber)
 {
@@ -161,13 +177,19 @@ int QuestItem(int QuestNumber)
 			return 0;
 		}
 	}
+	else if (QuestNumber == 2)
+	{
+		if (aa == 1)
+		{
+		aa = 0;
+		return 1;
+		}
+	}
 }
 int PrizeMoneyCheck(string map, int who)
 {
-	if (map == "艾村", 2)
-	{
-		return 500;
-	}
+	if (map == "艾村" and who==2)return 300;
+	if (map == "艾村" and who == 3)return 500;
 	else
 	{
 		return 0;
@@ -175,10 +197,8 @@ int PrizeMoneyCheck(string map, int who)
 }
 int PrizeExpCheck(string map, int who)
 {
-	if (map == "艾村", 2)
-	{
-		return 80;
-	}
+	if (map == "艾村" and who==2)return 80;
+	if (map == "艾村" and who == 3)return 120;
 	else
 	{
 		return 0;
@@ -186,8 +206,6 @@ int PrizeExpCheck(string map, int who)
 }
 string PrizeItemCheck(string map, int who,string playerjob)
 {
-	if (map == "艾村", 2)
-	{
-		return "NULL";
-	}
+	if (map == "艾村" and who==2)return "NULL";
+	if (map == "艾村" and who == 3)return "NULL";
 }

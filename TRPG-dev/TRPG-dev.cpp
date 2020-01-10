@@ -21,6 +21,7 @@ int doneornot = 0;
 string bag[100];
 int bagcount[100];
 int SaveNumber;
+int npcm = 0;
 struct Character
 {
 	string name;
@@ -97,6 +98,52 @@ void HpLine(float y,float z,double MonsterHP,string Monster) //輸出血量和�
 	}
 	cout << setw(8);
 }
+void QuestDone(int ckk)
+{
+	doneornot = 0;
+	cout << "\n獲得報酬!\n\n";
+	for (int gg = 0; bag[gg] != "none"; gg++)
+	{
+		bagcount[gg] -= DeleteItemCount(bag[gg], whatsquest);
+	}
+	whatsquest = -1;
+	QuestCheck = 0;
+	AllQuest[Quest(where(map), ckk)] = 0;
+	int money = 0;
+	int exp = 0;
+	string item = "";
+	money = PrizeMoneyCheck(where(map), ckk);
+	exp = PrizeExpCheck(where(map), ckk);
+	item = PrizeItemCheck(where(map), ckk, player.job);
+	if (money != 0)
+	{
+		cout << "獲得" << money << "元!\n";
+		player.Money += money;
+	}
+	if (exp != 0)
+	{
+
+		cout << "獲得" << exp << "點經驗值!\n";
+		player.exp += exp;
+		while (player.exp >= 150 + pow(2, player.level * 0.35))
+		{
+			cout << "                           \\LEVEL UP!/" << endl;;
+			player.exp -= 150 + pow(2, player.level * 0.35);
+			player.fightingHP = player.HP;
+			player.level++;
+		}
+	}
+	if (item != "NULL")
+	{
+		cout << "獲得" << item << "!\n";
+		int y = 0;
+		for (int x = 0; clothitem[x] != "none"; x++)
+		{
+			y = x;
+		}
+		clothitem[y + 1] = item;
+	}
+}
 void save()
 {
 	switch (SaveNumber)
@@ -170,6 +217,7 @@ void ingame()
 		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入其他按鍵離開" << endl;
 		cout << "\n目前所在地:" << where(map) << endl << endl;
 		save();
+		cout << doneornot;
 		if (owo == 1)
 		{
 			save();
@@ -254,75 +302,103 @@ void ingame()
 				cout << "請輸入欲對話的NPC代號 輸入0返回\n\n";
 				int ckk;
 				cin >> ckk;
+				int w = 1;
 				if (Quest(where(map), ckk) == 1 and Quest(where(map), ckk) != AllQuest[Quest(where(map), ckk)])
 				{
-					cout << "\n這個任務你已經解決了\n\n";
+					NpcTK(map, ckk, 99);
+					cout << "\n\n";
 				}
-				else if (Quest(where(map), ckk) == 1 and QuestCheck != 1)
+				else if (BuyOrNot(map, ckk) == 1 and (Quest(where(map), ckk) < 0))
 				{
-					NpcTK(map, ckk);
-					cout << "\n是否要接取任務?(Y/N)\n";
-					string ck;
-					cin >> ck;
-					if (ck == "Y" or ck == "y")
+					cout << "\n對話按1 進入商店按2\n";
+					cin >> w;
+					NpcTK(map, ckk, w);
+				}
+				else if((BuyOrNot(map, ckk) == 1 and (Quest(where(map), ckk) >= 1)))
+				{
+					cout<<"\n對話按1 進入商店按2 查看任務按3\n";
+					cin >> w;
+					if (w == 1)
 					{
-						whatsquest = Quest(where(map), ckk);
-						QuestCheck = 1;
+						NpcTK(map, ckk, w);
 					}
-					else if (ck == "n" or ck == "N")
+					else if (w == 2)
 					{
-						cout << "\n已拒絕\n";
+						NpcTK(map, ckk, w);
+						//shop
 					}
+					else if (doneornot == 1 and whatsquest != AllQuest[Quest(where(map), ckk)])
+					{
+						NpcTK(map, ckk, 99);
+					}
+					else if (w == 3 and QuestCheck!=1)
+					{
+						if (AllQuest[Quest(where(map), ckk)] == 0)
+						{
+							NpcTK(map, ckk, 99);
+						}
+						else
+						{
+							NpcTK(map, ckk, w);
+							cout << "\n是否要接取任務?(Y/N)\n";
+							string ck;
+							cin >> ck;
+							if (ck == "Y" or ck == "y")
+							{
+								whatsquest = Quest(where(map), ckk);
+								QuestCheck = 1;
+								npcm = ckk;
+							}
+							else if (ck == "n" or ck == "N")
+							{
+								cout << "\n已拒絕\n";
+							}
+						}
+					}
+					else if (QuestCheck == 1 and doneornot!=1)
+					{
+						cout << "\n請先完成目前所接的任務\n\n";
+					}
+					else if (QuestCheck == 1 and whatsquest == Quest(where(map), ckk))
+					{
+						QuestDone(ckk);
+					}
+				}
+				else if (Quest(where(map), ckk) >=1 and QuestCheck != 1)
+				{
+					cout << "對話按1 查看任務按下2 按0返回\n";
+					cin >> w;
+					if (w == 1)
+					{
+						NpcTK(map, ckk, w);
+						cout << "\n\n";
+					}
+					else if (w == 2)
+					{
+						NpcTK(map, ckk,w);
+						cout << "\n是否要接取任務?(Y/N)\n";
+						string ck;
+						cin >> ck;
+						if (ck == "Y" or ck == "y")
+						{
+							whatsquest = Quest(where(map), ckk);
+							QuestCheck = 1;
+							npcm = ckk;
+						}
+						else if (ck == "n" or ck == "N")
+						{
+							cout << "\n已拒絕\n";
+						}
+					}
+
 				}
 				else if (Quest(where(map), ckk) == 0)
 				{
-					NpcTK(map, ckk);
+					NpcTK(map, ckk,0);
 				}
-				else if (doneornot == 1)
+				else if (doneornot == 1 and whatsquest==Quest(where(map),ckk))
 				{
-					doneornot = 0;
-					cout << "\n獲得報酬!\n\n";
-					for (int gg = 0; bag[gg] != "none"; gg++)
-					{
-						bagcount[gg] -= DeleteItemCount(bag[gg],whatsquest);
-					}
-					whatsquest = -1;
-					QuestCheck = 0;
-					AllQuest[Quest(where(map), ckk)] = 0;
-					int money = 0;
-					int exp = 0;
-					string item = "";
-					money = PrizeMoneyCheck(where(map), ckk);
-					exp = PrizeExpCheck(where(map), ckk);
-					item = PrizeItemCheck(where(map), ckk, player.job);
-					if (money != 0)
-					{
-						cout << "獲得" << money << "元!\n";
-						player.Money += money;
-					}
-					if (exp != 0)
-					{
-
-						cout << "獲得" << exp << "點經驗值!\n";
-						player.exp += exp;
-						while (player.exp >= 150 + pow(2, player.level * 0.35))
-						{
-							cout << "                           \\LEVEL UP!/" << endl;;
-							player.exp -= 150 + pow(2, player.level * 0.35);
-							player.fightingHP = player.HP;
-							player.level++;
-						}
-					}
-					if (item != "NULL")
-					{
-						cout << "獲得" << item << "!\n";
-						int y = 0;
-						for (int x = 0; clothitem[x] != "none"; x++)
-						{
-							y = x;
-						}
-						clothitem[y + 1] = item;
-					}
+					QuestDone(ckk);
 				}
 				else if (QuestCheck == 1)
 				{
@@ -412,11 +488,11 @@ void ingame()
 						player.exp = player.exp + HisEXP(Monster);
 						cout << "獲得了" << HisEXP(Monster) << "點經驗" << endl;
 						string Prize;
-						Prize = GetPrize(Monster);
+						Prize = GetPrize(Monster,whatsquest,doneornot);
 						int ckk = 0;
 						if (Prize != "none")
 						{
-							int ct = GetCount(Monster);
+							int ct = GetCount(Monster,whatsquest);
 							for (int k = 0; k <= 99; k++)
 							{
 								if (bag[k] == Prize)
@@ -551,11 +627,11 @@ void ingame()
 							cout << "\n勝利\n\n";
 							player.exp = player.exp + HisEXP(Monster);
 							string Prize;
-							Prize = GetPrize(Monster);
+							Prize = GetPrize(Monster,whatsquest, doneornot);
 							int ckk = 0;
 							if (Prize != "none")
 							{
-								int ct = GetCount(Monster);
+								int ct = GetCount(Monster,whatsquest);
 								for (int k = 0; k <= 99; k++)
 								{
 									if (bag[k] == Prize)
@@ -587,7 +663,7 @@ void ingame()
 							{
 								if (QuestItem(whatsquest) == 1)
 								{
-									cout << "\n任務完成!\n\n";
+									cout << "\n任務已完成!\n\n";
 									doneornot = 1;
 								}
 							}

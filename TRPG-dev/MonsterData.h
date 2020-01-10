@@ -160,12 +160,20 @@ string HisSkillName(string Monster)
 		return "重捶";
 	}
 }
-string GetPrize(string MonsterName)
+string GetPrize(string MonsterName,int QuestOrNot ,int done)
 {
 	int p;
 	if (MonsterName == "轉轉鳥")
 	{
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
+		if (QuestOrNot == 2 and done==0)
+		{
+			if (p >= 75)
+			{
+				cout << "你獲得了商人的錢包";
+				return "商人的錢包";
+			}
+		}
 		if (p >= 20)
 		{
 			cout << "你獲得了羽毛";
@@ -216,11 +224,16 @@ string GetPrize(string MonsterName)
 		}
 	}
 }
-int GetCount(string MonsterName)
+int GetCount(string MonsterName,int Quest)
 {
 	int p;
 	if (MonsterName == "轉轉鳥")
 	{
+		if (Quest == 2)
+		{
+			cout << "!\n\n";
+			return 1;
+		}
 		p = (rand() * 35 % 352 * rand() + 32) % 100;
 		if (p >= 50)
 		{
