@@ -197,7 +197,7 @@ int PrizeMoneyCheck(string map, int who)
 }
 int PrizeExpCheck(string map, int who)
 {
-	if (map == "艾村" and who==2)return 80;
+	if (map == "艾村" and who==2)return 10000;
 	if (map == "艾村" and who == 3)return 120;
 	else
 	{
