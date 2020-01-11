@@ -1,4 +1,4 @@
-﻿#include <iostream>//QWEWQWW
+﻿#include <iostream>
 #include <fstream>
 #include "item.h"
 #include "map.h"
