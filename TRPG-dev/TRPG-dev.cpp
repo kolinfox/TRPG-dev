@@ -394,6 +394,11 @@ void ingame()
 					{
 						while (w != 0)
 						{
+							NpcTK(map, ckk, w);
+							cout << "\n是否要接取任務?(Y/N)\n"; //OWO
+							string ck;
+							cin >> ck;
+							if (ck == "Y" or ck == "y")
 							cout << "對話按1 查看任務按下2 按0返回\n";
 							cin >> w;
 							if(w==0)break;
