@@ -160,7 +160,7 @@ void save()
 	case 4:
 		fo.open("PlayerData4.txt", ios::out);
 		break;
-	}
+	}//test
 	fo << player.name << endl;
 	fo << player.job << endl;
 	fo << player.Head << endl;
