@@ -1,4 +1,4 @@
-﻿#include <iostream>//QWEWQWW
+﻿#include <iostream>//QWEWQWWnewspaper
 #include <fstream>
 #include "item.h"
 #include "map.h"
