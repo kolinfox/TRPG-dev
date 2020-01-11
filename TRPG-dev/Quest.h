@@ -99,22 +99,27 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			if (a >= 1 and b >= 1)
 			{
 				CountSave();
-				qwe.close();
 				return 1;
 			}
 			CountSave();
-			qwe.close();
 			return 0;
 		}
 		if (a >= 1 and b >= 1)
 		{
 			CountSave();
-			qwe.close();
 			return 1;
 		}
 	}
-	if (QuestNumber == 2)return 1;
-	if (QuestNumber == 0)return 0;
+	if (QuestNumber == 2)
+	{
+		qwe.close();
+		return 1;
+	}
+	if (QuestNumber == 0)
+	{
+		qwe.close();
+		return 0;
+	}
 }
 int aa=0, bb=0, cc=0, dd=0,ee=0;
 void QuestItem(int QuestNumber, string ItemName, int count)
@@ -170,6 +175,7 @@ int QuestItem(int QuestNumber)
 			bb = 0;
 			a = 0;
 			b = 0;
+			CountSave();
 			return 1;
 		}
 		else
