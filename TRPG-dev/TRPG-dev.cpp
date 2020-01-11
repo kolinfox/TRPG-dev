@@ -1,4 +1,4 @@
-﻿#include <iostream>//QWEWQWW
+﻿#include <iostream>//QWEWQWW We can communicate.
 #include <fstream>
 #include "item.h"
 #include "map.h"
