@@ -1,4 +1,4 @@
-﻿#include <iostream>//QWEWQ
+﻿#include <iostream>//QWEWQnewwww
 #include <fstream>
 #include "item.h"
 #include "map.h"
