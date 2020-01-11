@@ -343,7 +343,7 @@ void ingame()
 						else
 						{
 							NpcTK(map, ckk, w);
-							cout << "\n是否要接取任務?(Y/N)\n";
+							cout << "\n是否要接取任務?(Y/N)\n"; //OWO
 							string ck;
 							cin >> ck;
 							if (ck == "Y" or ck == "y")
