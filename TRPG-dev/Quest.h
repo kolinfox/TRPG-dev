@@ -1,5 +1,5 @@
 #include<iostream>
-#include<string>//K
+#include<string>
 using namespace std;
 ofstream qwe;
 ifstream qqe;
