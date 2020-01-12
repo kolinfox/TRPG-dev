@@ -8,7 +8,7 @@
 #include<windows.h>
 #include<math.h>
 #include"NPCtalk.h"
-using namespace std; //test
+using namespace std;
 ofstream fo;
 ifstream fw;
 string X = "none";
@@ -161,7 +161,7 @@ void save()
 	case 4:
 		fo.open("PlayerData4.txt", ios::out);
 		break;
-	}//test
+	}
 	fo << player.name << endl;
 	fo << player.job << endl;
 	fo << player.Head << endl;
@@ -605,7 +605,7 @@ void ingame()
 							{
 								MonsterDamage = 0;
 							}
-							else if (MonsterDamage <= player.def) //50 25
+							else if (MonsterDamage <= player.def) 
 							{
 								MonsterDamage = MonsterDamage * (1 - ((player.def / MonsterDamage) / 10));
 							}
