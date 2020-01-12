@@ -8,7 +8,7 @@
 #include<windows.h>
 #include<math.h>
 #include"NPCtalk.h"
-using namespace std; //test
+using namespace std;
 ofstream fo;
 ifstream fw;
 string X = "none";
