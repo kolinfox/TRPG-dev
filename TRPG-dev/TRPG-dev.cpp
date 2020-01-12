@@ -124,7 +124,7 @@ void QuestDone(int ckk)
 	if (exp != 0)
 	{
 
-		cout << "獲得" << exp << "點經驗值!\n";
+		cout << "獲得" << exp << "點經驗值!\n"; //測試用途
 		player.exp += exp;
 		while (player.exp >= 150 + pow(2, player.level * 0.35))
 		{
