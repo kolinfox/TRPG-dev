@@ -8,7 +8,7 @@
 #include<windows.h>
 #include<math.h>
 #include"NPCtalk.h"
-using namespace std;
+using namespace std; //test
 ofstream fo;
 ifstream fw;
 string X = "none";
@@ -365,7 +365,7 @@ void ingame()
 								else
 								{
 									NpcTK(map, ckk, w);
-									cout << "\n是否要接取任務?(Y/N)\n"; //owo
+									cout << "\n是否要接取任務?(Y/N)\n";
 									string ck;
 									cin >> ck;
 									if (ck == "Y" or ck == "y")
