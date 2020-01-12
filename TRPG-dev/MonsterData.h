@@ -1,6 +1,6 @@
 ﻿#include<iostream>
 #include<string>
-#include<time.h>
+#include<time.h>//ZZ
 using namespace std;
 int p;
 int HisHP(string Monster)
