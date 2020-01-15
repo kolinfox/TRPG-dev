@@ -8,6 +8,7 @@
 #include<windows.h>
 #include<math.h>
 #include"NPCtalk.h"
+#include"shop.h"
 using namespace std;
 ofstream fo;
 ifstream fw;
@@ -277,9 +278,9 @@ void ingame()
 			system("cls");
 			owo = 0;
 			cout << "道具名稱" << setw(12) << "數量" << endl << endl;
+			int f = 1;
 			for (int x = 0; x<=99; x++)
 			{
-				int f = 1;
 				if (bag[x] != "none")
 				{
 					cout<<f<<"." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
@@ -355,7 +356,72 @@ void ingame()
 							else if (w == 2)
 							{
 								NpcTK(map, ckk, w);
-								//shop
+								shop(map,ckk);
+								int buyorsale;
+								cin >> buyorsale;
+								while (buyorsale>2 or buyorsale <1)
+								{
+									cout << "\n請重新輸入!\n";
+									cin >> buyorsale;
+								}
+								if (buyorsale == 1)
+								{
+									while (1)
+									{
+										string buyitem;
+										int itemcount;
+										buyitem = shoplist(map, ckk,player.Money);
+
+										if (buyitem == "stop")
+										{
+											cout << "\n已退出\n";
+											break;
+										}
+										else
+										{
+											cout << "要買幾個?\n";
+											cin >> itemcount;
+											int total = ItemMoney(buyitem) * itemcount;
+											if (total > player.Money)
+											{
+												SetColor(12, 0);
+												cout << "\n身上的艾斐幣不夠!\n\n";
+												SetColor();
+											}
+											else
+											{
+												cout << "\n你買了" << buyitem << itemcount << "個,花了"<<total<<"艾斐幣" << endl << endl;
+												player.Money -= total;
+												int jo=0;
+												for (int h = 0; h <= 99; h++)
+												{
+													if (bag[h] == buyitem)
+													{
+														bagcount[h] += itemcount;
+														jo = 1;
+														break;
+													}
+												}
+												if (jo == 0)
+												{
+													int f = 0;
+													for (int h = 0; bag[h] != "none"; h++)
+													{
+														f = h;
+													}
+													bag[f + 1]=buyitem;
+													bagcount[f+1]=itemcount;
+												}
+											}
+
+										}
+									}
+
+								}
+								else if (buyorsale == 2)
+								{
+									//sale
+								}
 							}
 							else if (QuestCheck == 1 and whatsquest != AllQuest[Quest(where(map), ckk)])
 							{
