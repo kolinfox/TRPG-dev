@@ -124,7 +124,7 @@ void QuestDone(int ckk)
 	if (exp != 0)
 	{
 
-		cout << "獲得" << exp << "點經驗值!\n";
+		cout << "獲得" << exp << "點經驗值!\n"; 
 		player.exp += exp;
 		while (player.exp >= 150 + pow(2, player.level * 0.35))
 		{
@@ -161,7 +161,7 @@ void save()
 	case 4:
 		fo.open("PlayerData4.txt", ios::out);
 		break;
-	}//test
+	}
 	fo << player.name << endl;
 	fo << player.job << endl;
 	fo << player.Head << endl;
@@ -270,12 +270,21 @@ void ingame()
 		cin >> move;
 		if (move == "i" or move == "I")
 		{
+			for (int g = 0; g <= 99; g++)
+			{
+				if (bagcount[g] == 0)bag[g] = "none";
+			}
 			system("cls");
 			owo = 0;
 			cout << "道具名稱" << setw(12) << "數量" << endl << endl;
-			for (int x = 0; bag[x] != "none"; x++)
+			for (int x = 0; x<=99; x++)
 			{
-				cout << x + 1 << "." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
+				int f = 1;
+				if (bag[x] != "none")
+				{
+					cout<<f<<"." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
+					f++;
+				}
 			}
 			int ch=1;
 			while (1)
@@ -365,7 +374,7 @@ void ingame()
 								else
 								{
 									NpcTK(map, ckk, w);
-									cout << "\n是否要接取任務?(Y/N)\n"; //owo
+									cout << "\n是否要接取任務?(Y/N)\n";
 									string ck;
 									cin >> ck;
 									if (ck == "Y" or ck == "y")
@@ -499,7 +508,8 @@ void ingame()
 			{
 				if (PrintMonster(map) == 0)
 				{
-
+					cout << "這裡沒有怪物\n\n";
+					break;
 				}
 				else
 				{
@@ -610,7 +620,7 @@ void ingame()
 							{
 								MonsterDamage = 0;
 							}
-							else if (MonsterDamage <= player.def) //50 25
+							else if (MonsterDamage <= player.def) 
 							{
 								MonsterDamage = MonsterDamage * (1 - ((player.def / MonsterDamage) / 10));
 							}
