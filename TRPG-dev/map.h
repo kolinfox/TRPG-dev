@@ -16,7 +16,6 @@ int PrintMonster(int map)
 	}
 	else if (map == 1)
 	{
-		cout << "這裡沒有怪物\n";
 		return 0;
 	}
 	else if (map == 2)
@@ -90,5 +89,9 @@ int npc(int map)
 	else if (map == 1)
 	{
 		return 1;
+	}
+	else if (map == 2)
+	{
+		return 0;
 	}
 }
