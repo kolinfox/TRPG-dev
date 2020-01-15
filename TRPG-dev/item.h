@@ -1,7 +1,7 @@
 ﻿#include<iostream>
 #include<string>
 using namespace std;
-string armr(string job,int damage,int str,int dex,int iq)//不用理這裡test
+string armr(string job,int damage,int str,int dex,int iq)//不用理這裡
 {
 	if (job == "fighter" and damage  == 3 and str == 5)
 	{
