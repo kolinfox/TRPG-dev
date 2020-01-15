@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/TRPG-dev/QuestSchedule.txt
+/TRPG-dev/PlayerData.txt

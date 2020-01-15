@@ -270,12 +270,21 @@ void ingame()
 		cin >> move;
 		if (move == "i" or move == "I")
 		{
+			for (int g = 0; g <= 99; g++)
+			{
+				if (bagcount[g] == 0)bag[g] = "none";
+			}
 			system("cls");
 			owo = 0;
 			cout << "道具名稱" << setw(12) << "數量" << endl << endl;
-			for (int x = 0; bag[x] != "none"; x++)
+			for (int x = 0; x<=99; x++)
 			{
-				cout << x + 1 << "." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
+				int f = 1;
+				if (bag[x] != "none")
+				{
+					cout<<f<<"." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
+					f++;
+				}
 			}
 			int ch=1;
 			while (1)
@@ -499,7 +508,8 @@ void ingame()
 			{
 				if (PrintMonster(map) == 0)
 				{
-
+					cout << "這裡沒有怪物\n\n";
+					break;
 				}
 				else
 				{

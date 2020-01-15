@@ -160,9 +160,13 @@ int DeleteItemCount(string name,int QuestNumber)
 			return 0;
 		}
 	}
-	if (QuestNumber == 2)
+	if (QuestNumber == 2 and name=="商人的錢包")
 	{
 		return 1;
+	}
+	else
+	{
+		return 0;
 	}
 }
 int QuestItem(int QuestNumber)
