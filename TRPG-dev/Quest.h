@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 using namespace std;
 ofstream qwe;
@@ -30,11 +30,11 @@ void CountSave()
 }
 int Quest(string MapName, int NpcNumber)
 {
-	if (MapName == "¦ã§ø" and NpcNumber==2)
+	if (MapName == "è‰¾æ‘" and NpcNumber==2)
 	{
 		return 1;
 	}
-	else if (MapName == "¦ã§ø" and NpcNumber == 3)
+	else if (MapName == "è‰¾æ‘" and NpcNumber == 3)
 	{
 		return 2;
 	}
@@ -82,7 +82,7 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 		}
 	if (QuestNumber == 1)
 	{
-		if (Monster == "ÂàÂà³¾")
+		if (Monster == "è½‰è½‰é³¥")
 		{
 			a++;
 			if (a >= 1 and b >= 1)
@@ -93,7 +93,7 @@ int QuestReturn(int QuestNumber, string Monster,int s)
 			CountSave();
 			return 0;
 		}
-		if (Monster == "¤p¥Û©Ç")
+		if (Monster == "å°çŸ³æ€ª")
 		{
 			b++;
 			if (a >= 1 and b >= 1)
@@ -126,18 +126,18 @@ void QuestItem(int QuestNumber, string ItemName, int count)
 {
 	if (QuestNumber == 1)
 	{
-		if (ItemName == "¦Ğ¤ò")
+		if (ItemName == "ç¾½æ¯›")
 		{
 			aa = count;
 		}
-		else if (ItemName == "¸H¥Û")
+		else if (ItemName == "ç¢çŸ³")
 		{
 			bb = count;
 		}
 	}
 	else if (QuestNumber == 2)
 	{
-		if (ItemName == "°Ó¤Hªº¿ú¥]")
+		if (ItemName == "å•†äººçš„éŒ¢åŒ…")
 		{
 			aa = count;
 		}
@@ -147,11 +147,11 @@ int DeleteItemCount(string name,int QuestNumber)
 {
 	if (QuestNumber == 1)
 	{
-		if (name == "¸H¥Û")
+		if (name == "ç¢çŸ³")
 		{
 			return 1;
 		}
-		else if (name == "¦Ğ¤ò")
+		else if (name == "ç¾½æ¯›")
 		{
 			return 1;
 		}
@@ -160,7 +160,7 @@ int DeleteItemCount(string name,int QuestNumber)
 			return 0;
 		}
 	}
-	if (QuestNumber == 2 and name=="°Ó¤Hªº¿ú¥]")
+	if (QuestNumber == 2 and name=="å•†äººçš„éŒ¢åŒ…")
 	{
 		return 1;
 	}
@@ -198,8 +198,8 @@ int QuestItem(int QuestNumber)
 }
 int PrizeMoneyCheck(string map, int who)
 {
-	if (map == "¦ã§ø" and who==2)return 300;
-	if (map == "¦ã§ø" and who == 3)return 500;
+	if (map == "è‰¾æ‘" and who==2)return 300;
+	if (map == "è‰¾æ‘" and who == 3)return 500;
 	else
 	{
 		return 0;
@@ -207,8 +207,8 @@ int PrizeMoneyCheck(string map, int who)
 }
 int PrizeExpCheck(string map, int who)
 {
-	if (map == "¦ã§ø" and who==2)return 80;
-	if (map == "¦ã§ø" and who == 3)return 120;
+	if (map == "è‰¾æ‘" and who==2)return 80;
+	if (map == "è‰¾æ‘" and who == 3)return 120;
 	else
 	{
 		return 0;
@@ -216,6 +216,6 @@ int PrizeExpCheck(string map, int who)
 }
 string PrizeItemCheck(string map, int who,string playerjob)
 {
-	if (map == "¦ã§ø" and who==2)return "NULL";
-	if (map == "¦ã§ø" and who == 3)return "NULL";
+	if (map == "è‰¾æ‘" and who==2)return "NULL";
+	if (map == "è‰¾æ‘" and who == 3)return "NULL";
 }
