@@ -379,8 +379,14 @@ void ingame()
 										}
 										else
 										{
-											cout << "要買幾個?\n";
+											cout << "要買幾個"<<buyitem<<"?\n";
 											cin >> itemcount;
+											while (itemcount > 99 or itemcount <= 0)
+											{
+												if (itemcount > 99)cout << "\n一次最大購買數量是99個! 請重新輸入數量\n";
+												if (itemcount <= 0)cout << "\n輸入錯誤! 請重新輸入數量\n";
+												cin >> itemcount;
+											}
 											int total = ItemMoney(buyitem) * itemcount;
 											if (total > player.Money)
 											{

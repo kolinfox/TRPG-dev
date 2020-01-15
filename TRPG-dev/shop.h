@@ -22,6 +22,12 @@ string shoplist(int Map, int ckk,int money)
 		cout << "\n\n輸入道具代號來購買 輸入0返回\n";
 		int g;
 		cin >> g;
+		while (g < 0 or g>=3)
+		{
+			cout<<"\n請重新輸入!\n";
+			cin >> g;
+		}
+
 		if (g == 0)return "stop";
 		return list[g - 1];
 	}
