@@ -403,15 +403,10 @@ void ingame()
 					{
 						while (w != 0)
 						{
-							NpcTK(map, ckk, w);
-							cout << "\n是否要接取任務?(Y/N)\n"; 
-							string ck;
-							cin >> ck;
-							if (ck == "Y" or ck == "y")
 							cout << "對話按1 查看任務按下2 按0返回\n";
 							cin >> w;
-							if(w==0)break;
-							if (Quest(where(map), ckk) == 1 and Quest(where(map), ckk) != AllQuest[Quest(where(map), ckk)] and w==2)
+							if (w == 0)break;
+							if (Quest(where(map), ckk) == 1 and Quest(where(map), ckk) != AllQuest[Quest(where(map), ckk)] and w == 2)
 							{
 								NpcTK(map, ckk, 99);
 								cout << "\n\n";
@@ -425,7 +420,7 @@ void ingame()
 							{
 								QuestDone(ckk);
 							}
-							else if (QuestCheck == 1 and w==2)
+							else if (QuestCheck == 1 and w == 2)
 							{
 								cout << "\n請先完成目前所接的任務\n\n";
 							}
