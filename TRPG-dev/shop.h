@@ -1,30 +1,30 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 void shop(int Map,int ckk)
 {
 	if (Map == 1 and ckk == 3)
 	{
-		cout << "\n¿é¤J1¶R¹D¨ã ¿é¤J2½æ¹D¨ã\n";
+		cout << "\nè¼¸å…¥1è²·é“å…· è¼¸å…¥2è³£é“å…·\n";
 	}
 }
 string shoplist(int Map, int ckk,int money)
 {
 	if (Map == 1 and ckk == 3)
 	{
-		string list[10] = {"¬õ¦âÃÄ¤ô","ÂÅ¦âÃÄ¤ô","end" };
+		string list[10] = {"ç´…è‰²è—¥æ°´","è—è‰²è—¥æ°´","end" };
 		int moneylist[10] = { 50,50 };
-		string effect[10] = { "«ì´_ÂI¥Í©R","«ì´_ÂIÅ]¤O" };
+		string effect[10] = { "æ¢å¾©é»ç”Ÿå‘½","æ¢å¾©é»é­”åŠ›" };
 		for (int k = 0; list[k] != "end"; k++)
 		{
-			cout << k + 1 << "." << list[k] << setw(15) << effect[k]<<setw(10)<<moneylist[k] << "¦ã´´¹ô" << endl << endl;
+			cout << k + 1 << "." << list[k] << setw(15) << effect[k]<<setw(10)<<moneylist[k] << "è‰¾æ–å¹£" << endl << endl;
 		}
-		cout  << "¦ã´´¹ô:" << money;
-		cout << "\n\n¿é¤J¹D¨ã¥N¸¹¨ÓÁÊ¶R ¿é¤J0ªğ¦^\n";
+		cout  << "è‰¾æ–å¹£:" << money;
+		cout << "\n\nè¼¸å…¥é“å…·ä»£è™Ÿä¾†è³¼è²· è¼¸å…¥0è¿”å›\n";
 		int g;
 		cin >> g;
 		while (g < 0 or g>=3)
 		{
-			cout<<"\n½Ğ­«·s¿é¤J!\n";
+			cout<<"\nè«‹é‡æ–°è¼¸å…¥!\n";
 			cin >> g;
 		}
 
@@ -34,6 +34,6 @@ string shoplist(int Map, int ckk,int money)
 }
 int ItemMoney(string ItemName)
 {
-	if (ItemName == "¬õ¦âÃÄ¤ô")return 50;
-	if (ItemName == "ÂÅ¦âÃÄ¤ô")return 50;
+	if (ItemName == "ç´…è‰²è—¥æ°´")return 50;
+	if (ItemName == "è—è‰²è—¥æ°´")return 50;
 }
