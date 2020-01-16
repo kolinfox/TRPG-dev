@@ -115,3 +115,9 @@ int ItemHp(string Item)
 		return 50;
 	}
 }
+int ItemPrize(string Item)
+{
+	if (Item == "¸H¥Û")return 20;
+	if (Item == "¦Ð¤ò")return 20;
+	if (Item == "­ô¥¬ªL¹ÏÄË")return 25;
+}

@@ -283,7 +283,7 @@ void ingame()
 			{
 				if (bag[x] != "none")
 				{
-					cout<<f<<"." << bag[x] << setw(20 - bag[x].length()) << bagcount[x] << endl << endl;
+					cout << f << "." << bag[x] << setw(18 - bag[x].length()) << bagcount[x] << endl << endl;
 					f++;
 				}
 			}
@@ -310,7 +310,6 @@ void ingame()
 					bagcount[ch - 1]--;
 				}
 			}
-
 		}
 		if (move == "P" or move == "p")
 		{
@@ -355,6 +354,7 @@ void ingame()
 							}
 							else if (w == 2)
 							{
+
 								NpcTK(map, ckk, w);
 								shop(map,ckk);
 								int buyorsale;
@@ -424,9 +424,46 @@ void ingame()
 									}
 
 								}
-								else if (buyorsale == 2)
+								else if (buyorsale == 2)//sale
 								{
-									//sale
+									system("cls");
+									while (1)
+									{
+										for (int g = 0; g <= 99; g++)
+										{
+											if (bagcount[g] == 0)bag[g] = "none";
+										}
+										owo = 0;
+										cout << "道具名稱" << setw(12) << "數量" <<setw(12)<<"物品單價"<< endl << endl;
+										int f = 1;
+										for (int x = 0; x <= 99; x++)
+										{
+											if (bag[x] != "none")
+											{
+												cout << f << "." << bag[x] << setw(18 - bag[x].length()) << bagcount[x] <<setw(12)<<ItemPrize(bag[x])<< endl << endl;
+												f++;
+											}
+										}
+										int ch = 0;
+										cout << "輸入道具代碼來賣出道具 按下0返回\n";
+										cin >> ch;
+										if (ch == 0)break;
+										if (bag[ch - 1] == "none")cout << "\n錯誤!\n\n";
+										else
+										{
+											cout << "要賣幾個"<<bag[ch-1]<<"?\n";
+											int HowMuch;
+											cin >> HowMuch;
+											while (HowMuch < 0 or HowMuch>bagcount[ch-1])
+											{
+												if(HowMuch<0)cout << "\n請重新輸入!\n";
+												if(HowMuch>bagcount[ch-1])cout << "你沒有這麼多的" << bag[ch - 1]<<",請重新輸入!\n";
+												cin >> HowMuch;
+											}
+											bagcount[ch - 1] -= HowMuch;
+											player.Money += HowMuch * ItemPrize(bag[ch - 1]);
+										}
+									}
 								}
 							}
 							else if (QuestCheck == 1 and whatsquest != AllQuest[Quest(where(map), ckk)])
@@ -538,6 +575,7 @@ void ingame()
 				owo = 0;
 				save();
 			}
+			owo = 0;
 		}
 		if (move == "L" or move == "l")
 		{

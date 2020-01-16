@@ -128,7 +128,7 @@ float GetSkillDamage(string HisSkillName)
 int SpecialEffect(string Monster)
 {
 	srand(time(NULL));
-	p = ((rand() * rand()) % 1608) % 100;
+	p = ((rand() * rand()) % 1608) % 100; //601是暈眩
 	//if (Monster == "轉轉鳥")
 	//{
 	//	if (p < 10)
