@@ -1,5 +1,7 @@
-﻿/* 2020 01 17 no update */
-/* test */
+﻿/* 2020 01 18 01 35 A.M. update ver.1 */
+/* 排版和註解極少行程式碼 */
+/* 還沒把BK的註解複製過來 */
+/* 1085 1098 logic error */
 
 #include <iostream>
 #include <fstream>
@@ -353,24 +355,30 @@ void ingame()
 		}
 		/* Check_Item */ // 20.01.17
 
+		/* Check_NPC */ // 20.01.18
 		if (move == "P" or move == "p")
 		{
 			system("cls");
+
 			while (1)
 			{
 				if (npc(map) == 1)
 				{
 					int owowo = 0;
+
 					cout << "\nNPC:" << Npc(map) << setw(5);
 					cout << "\n\n";
 					cout << "請輸入欲對話的NPC代號 輸入0返回\n\n";
+
 					int ckk;
 					cin >> ckk;
+
 					if (ckk == 0)
 					{
 						owo = 0;
 						break;
 					}
+
 					int w = 1;
 					if (BuyOrNot(map, ckk) == 1 and (Quest(where(map), ckk) < 0))
 					{
@@ -378,34 +386,45 @@ void ingame()
 						{
 							cout << "\n對話按1 進入商店按2 離開按0\n";
 							cin >> w;
-							if (w == 0)break;
+
+							if (w == 0)
+								break;
+
 							NpcTK(map, ckk, w);
 						}
 
 					}
+
 					else if ((BuyOrNot(map, ckk) == 1 and (Quest(where(map), ckk) >= 1)))
 					{
 						while (1)
 						{
 							cout << "\n對話按1 進入商店按2 查看任務按3 離開按0\n";
 							cin >> w;
-							if (w == 0)break;
+
+							if (w == 0)
+								break;
+
 							if (w == 1)
 							{
 								NpcTK(map, ckk, w);
 							}
+
 							else if (w == 2)
 							{
 
 								NpcTK(map, ckk, w);
 								shop(map,ckk);
+
 								int buyorsale;
 								cin >> buyorsale;
+
 								while (buyorsale>2 or buyorsale <1)
 								{
 									cout << "\n請重新輸入!\n";
 									cin >> buyorsale;
 								}
+
 								if (buyorsale == 1)
 								{
 									while (1)
@@ -419,27 +438,38 @@ void ingame()
 											cout << "\n已退出\n";
 											break;
 										}
+
 										else
 										{
 											cout << "要買幾個"<<buyitem<<"?\n";
 											cin >> itemcount;
+
 											while (itemcount > 99 or itemcount <= 0)
 											{
-												if (itemcount > 99)cout << "\n一次最大購買數量是99個! 請重新輸入數量\n";
-												if (itemcount <= 0)cout << "\n輸入錯誤! 請重新輸入數量\n";
+												if (itemcount > 99)
+													cout << "\n一次最大購買數量是99個! 請重新輸入數量\n";
+
+												if (itemcount <= 0)
+													cout << "\n輸入錯誤! 請重新輸入數量\n";
+
 												cin >> itemcount;
 											}
+
 											int total = ItemMoney(buyitem) * itemcount;
+
 											if (total > player.Money)
 											{
 												SetColor(12, 0);
 												cout << "\n身上的艾斐幣不夠!\n\n";
 												SetColor();
 											}
+
 											else
 											{
 												cout << "\n你買了" << buyitem << itemcount << "個,花了"<<total<<"艾斐幣" << endl << endl;
+
 												player.Money -= total;
+
 												int jo=0;
 												for (int h = 0; h <= 99; h++)
 												{
@@ -450,6 +480,7 @@ void ingame()
 														break;
 													}
 												}
+
 												if (jo == 0)
 												{
 													int f = 0;
@@ -466,17 +497,22 @@ void ingame()
 									}
 
 								}
-								else if (buyorsale == 2)//sale
+
+								else if (buyorsale == 2) // sale
 								{
 									system("cls");
+
 									while (1)
 									{
 										for (int g = 0; g <= 99; g++)
 										{
-											if (bagcount[g] == 0)bag[g] = "none";
+											if (bagcount[g] == 0)
+												bag[g] = "none";
 										}
 										owo = 0;
+
 										cout << "道具名稱" << setw(12) << "數量" <<setw(12)<<"物品單價"<< endl << endl;
+
 										int f = 1;
 										for (int x = 0; x <= 99; x++)
 										{
@@ -486,20 +522,31 @@ void ingame()
 												f++;
 											}
 										}
+
 										int ch = 0;
 										cout << "輸入道具代碼來賣出道具 按下0返回\n";
 										cin >> ch;
-										if (ch == 0)break;
-										if (bag[ch - 1] == "none")cout << "\n錯誤!\n\n";
+
+										if (ch == 0)
+											break;
+
+										if (bag[ch - 1] == "none")
+											cout << "\n錯誤!\n\n";
+
 										else
 										{
-											cout << "要賣幾個"<<bag[ch-1]<<"?\n";
 											int HowMuch;
+											cout << "要賣幾個"<<bag[ch-1]<<"?\n";
 											cin >> HowMuch;
+
 											while (HowMuch < 0 or HowMuch>bagcount[ch-1])
 											{
-												if(HowMuch<0)cout << "\n請重新輸入!\n";
-												if(HowMuch>bagcount[ch-1])cout << "你沒有這麼多的" << bag[ch - 1]<<",請重新輸入!\n";
+												if(HowMuch<0)
+													cout << "\n請重新輸入!\n";
+
+												if(HowMuch>bagcount[ch-1])
+													cout << "你沒有這麼多的" << bag[ch - 1]<<",請重新輸入!\n";
+
 												cin >> HowMuch;
 											}
 											bagcount[ch - 1] -= HowMuch;
@@ -508,85 +555,106 @@ void ingame()
 									}
 								}
 							}
+
 							else if (QuestCheck == 1 and whatsquest != AllQuest[Quest(where(map), ckk)])
 							{
 								cout << "\n請先完成目前所接的任務\n\n";
 							}
+
 							else if (doneornot == 1 and whatsquest != AllQuest[Quest(where(map), ckk)] and AllQuest[Quest(where(map), ckk)] == 0)
 							{
 								NpcTK(map, ckk, 99);
 							}
+
 							else if (w == 3 and QuestCheck != 1)
 							{
 								if (AllQuest[Quest(where(map), ckk)] == 0)
 								{
 									NpcTK(map, ckk, 99);
 								}
+
 								else
 								{
 									NpcTK(map, ckk, w);
 									cout << "\n是否要接取任務?(Y/N)\n";
+
 									string ck;
 									cin >> ck;
+
 									if (ck == "Y" or ck == "y")
 									{
 										whatsquest = Quest(where(map), ckk);
 										QuestCheck = 1;
 										npcm = ckk;
 									}
+
 									else if (ck == "n" or ck == "N")
 									{
 										cout << "\n已拒絕\n";
 									}
 								}
 							}
+
 							else if (QuestCheck == 1 and doneornot != 1)
 							{
 								cout << "\n請先完成目前所接的任務\n\n";
 							}
+
 							else if (QuestCheck == 1 and whatsquest == Quest(where(map), ckk))
 							{
 								QuestDone(ckk);
 							}
 						}
 					}
+
 					else if (Quest(where(map), ckk) >= 1)
 					{
 						while (w != 0)
 						{
 							cout << "對話按1 查看任務按下2 按0返回\n";
+
 							cin >> w;
-							if (w == 0)break;
+							if (w == 0)
+								break;
+
 							if (Quest(where(map), ckk) == 1 and Quest(where(map), ckk) != AllQuest[Quest(where(map), ckk)] and w == 2)
 							{
 								NpcTK(map, ckk, 99);
 								cout << "\n\n";
 							}
+
 							else if (w == 1)
 							{
 								NpcTK(map, ckk, w);
 								cout << "\n\n";
 							}
+
 							else if (doneornot == 1 and whatsquest == Quest(where(map), ckk))
 							{
 								QuestDone(ckk);
 							}
+
 							else if (QuestCheck == 1 and w == 2)
 							{
 								cout << "\n請先完成目前所接的任務\n\n";
 							}
+
 							else if (w == 2 and AllQuest[Quest(where(map), ckk)] != 0)
 							{
 								NpcTK(map, ckk, w);
+
 								cout << "\n是否要接取任務?(Y/N)\n";
+
 								string ck;
 								cin >> ck;
+
 								if (ck == "Y" or ck == "y")
 								{
 									whatsquest = Quest(where(map), ckk);
 									QuestCheck = 1;
 									npcm = ckk;
 								}
+
 								else if (ck == "n" or ck == "N")
 								{
 									cout << "\n已拒絕\n";
@@ -595,37 +663,48 @@ void ingame()
 
 						}
 					}
+
 					else if (Quest(where(map), ckk) == 0)
 					{
 						NpcTK(map, ckk, 0);
 					}
+
 					else if (doneornot == 1 and whatsquest == Quest(where(map), ckk))
 					{
 						QuestDone(ckk);
 					}
+
 					else if (QuestCheck == 1 and whatsquest == Quest(where(map), ckk))
 					{
 						cout << "\n請先完成目前所接的任務\n\n";
 					}
 				}
+
 				else
 				{
 					cout << endl << "這裡沒有NPC\n\n";
 					owo = 0;
 					break;
 				}
+
 				owo = 0;
 				save();
 			}
+
 			owo = 0;
 		}
+		/* Check_NPC */ // 20.01.18
+
+		/* Go_Previous_Map */ // 20.01.18
 		if (move == "L" or move == "l")
 		{
 			system("cls");
+
 			if (map == 0)
 			{
 				cout << "已經在第一張地圖了\n";
 			}
+
 			else
 			{
 				map--;
@@ -633,13 +712,18 @@ void ingame()
 			owo = 0;
 			save();
 		}
+		/* Go_Previous_Map */ // 20.01.18
+
+		/* Go_Next_Map */ // 20.01.18
 		if (move == "N" or move == "n")
 		{
 			system("cls");
+
 			if (where(map + 1) == "none")
 			{
 				cout << "已經在最後一張地圖了 請等待日後開放\n";
 			}
+
 			else
 			{
 				map++;
@@ -647,10 +731,14 @@ void ingame()
 			owo = 0;
 			save();
 		}
+		/* Go_Next_Map */ // 20.01.18
+
+		/* Fighting */ // 20.01.18
 		if (move == "K" or move == "k")
 		{
 			owo = 0;
 			system("cls");
+
 			while (1)
 			{
 				if (PrintMonster(map) == 0)
@@ -658,52 +746,73 @@ void ingame()
 					cout << "這裡沒有怪物\n\n";
 					break;
 				}
+
 				else
 				{
 					string Monster;
 					int MonsterHP, MonsterD;
 					int cs;
 					int back = 0;
+
 					cin >> cs;
-					if (cs == 0)break;
+					if (cs == 0)
+						break;
+
 					Monster = Choose(cs, map);
+
 					system("cls");
+
 					if (cs == 0)
 					{
 						cout << "已返回" << endl << endl;
 						back = 1;
 					}
+
 					else if (Monster == "Wrong" and back == 0)
 					{
 						cout << "\n錯誤!\n\n";
 					}
+
 					else if (back == 0)
 					{
 						cout << "遇到了" << Monster << "(LV" << LV(Monster) << ")" << endl << endl;
+
 						MonsterHP = HisHP(Monster);
 						MonsterD = HisDamage(Monster);
+
 						float y = (player.fightingHP * 100) / player.HP;
 						HpLine(y, z, MonsterHP, Monster);
-						cout << endl;
-						cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
+
+						//cout << endl; move to next line , 20.01.18
+						cout << endl << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
+
 						int dag = int(player.realattack + ((((rand() * 76 - 475) % 369 * 478) % player.realattack) * 0.345));
-						cout << "對手受到" << dag << "點傷害     \n\n";
+						cout << "對手受到" << dag << "點傷害        \n\n";
+
 						MonsterHP -= dag;
+
 						int oneshot = 0;
+
 						if (MonsterHP <= 0)
 						{
 							float y = (player.fightingHP * 100) / player.HP;
 							float z = (MonsterHP * 100) / HisHP(Monster);
 							oneshot = 1;
+
 							cout << "\n秒殺!\n";
+
 							player.exp = player.exp + HisEXP(Monster);
 							cout << "獲得了" << HisEXP(Monster) << "點經驗" << endl;
+
 							string Prize;
 							Prize = GetPrize(Monster, whatsquest, doneornot);
+
 							int ckk = 0;
+
 							if (Prize != "none")
 							{
 								int ct = GetCount(Monster, whatsquest);
+
 								for (int k = 0; k <= 99; k++)
 								{
 									if (bag[k] == Prize)
@@ -713,6 +822,7 @@ void ingame()
 										break;
 									}
 								}
+
 								if (ckk == 0)
 								{
 									for (int g = 0; g <= 99; g++)
@@ -726,63 +836,78 @@ void ingame()
 									}
 								}
 							}
+
 							for (int gg = 0; bag[gg] != "none"; gg++)
 							{
 								QuestItem(whatsquest, bag[gg], bagcount[gg]);
 							}
+
 							if (QuestReturn(whatsquest, Monster, SaveNumber) == 1)
 							{
 								if (QuestItem(whatsquest) == 1)
 								{
 									cout << "\n任務完成!\n\n";
+
 									doneornot = 1;
 								}
 							}
+
 							while (player.exp >= 150 + pow(2, player.level * 0.35))
 							{
 								cout << "                           \\LEVEL UP!/" << endl;;
+
 								player.exp -= 150 + pow(2, player.level * 0.35);
 								lvup = 1;
 								player.level++;
 							}
+
 							save();
 						}
 						while ((player.HP > 0 or MonsterHP > 0) and oneshot != 1)
 						{
 							float y = (player.fightingHP * 100) / player.HP;
 							float z = (MonsterHP * 100) / HisHP(Monster);
+
 							HpLine(y, z, MonsterHP, Monster);
-							cout << endl;
-							cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
+							//cout << endl; move to next line , 20.01.18
+							cout << endl << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
+
 							float MonsterDamage = MonsterD + (((rand() * 76 - 475) % 369 * 478) % MonsterD) * 0.345;
+
 							if (HisSkill(Monster) == 1)
 							{
-								;
+								//; wtf? 20.01.18
 								float Dam;
 								Dam = GetSkillDamage(HisSkillName(Monster));
 								MonsterDamage *= Dam;
 								cout << "\n" << Monster << "發動了技能:" << HisSkillName(Monster) << endl << endl;
 							}
+
 							if (MonsterDamage * 10 < player.def)
 							{
 								MonsterDamage = 0;
 							}
+
 							else if (MonsterDamage <= player.def) 
 							{
 								MonsterDamage = MonsterDamage * (1 - ((player.def / MonsterDamage) / 10));
 							}
+
 							else if (MonsterDamage > player.def)
 							{
 								MonsterDamage = MonsterDamage * (1 + ((MonsterDamage / player.def) / 10));
 							}
+
 							player.fightingHP -= (MonsterDamage - 1);
 							int dizzy = 0;
 							int effect = SpecialEffect(Monster);
+
 							if (effect == 601)
 							{
 								cout << "你已被暈眩\n";
 								dizzy = 1;
 							}
+
 							Sleep(750);
 							SetColor(12, 0);
 							cout << "你受到";
@@ -793,10 +918,13 @@ void ingame()
 							SetColor(12, 0);
 							cout << "點傷害        \n\n";
 							SetColor();
+
 							y = (player.fightingHP * 100) / player.HP;
 							z = (MonsterHP * 100) / HisHP(Monster);
 							HpLine(y, z, MonsterHP, Monster);
+
 							cout << endl;
+
 							if (player.fightingHP <= 0)
 							{
 								cout << "你的血量:" << "0" << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
@@ -805,44 +933,60 @@ void ingame()
 								save();
 								break;
 							}
+
 							cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:" << MonsterHP << endl << endl;
 							Sleep(750);
+
 							int dag = int(player.realattack + (rand() % player.realattack) * 0.345);
+
 							if (dizzy == 1)
 							{
 								dag = 0;
 							}
+
 							cout << "對手受到" << dag << "點傷害\n\n";
+
 							MonsterHP -= dag;
+
 							if (player.fightingHP <= 0 and MonsterHP <= 0)
 							{
 								cout << "同歸於盡!";
+
 								player.fightingHP = player.HP;
 								save();
 							}
+
 							else if (player.fightingHP <= 0)
 							{
 								cout << "你的血量:" << "0" << "              對手的血量:" << MonsterHP << endl;
 								cout << "死亡\n";
+
 								player.fightingHP = player.HP;
 								save();
 								break;
 							}
+
 							else if (MonsterHP <= 0)
 							{
 								y = (player.fightingHP * 100) / player.HP;
 								z = (MonsterHP * 100) / HisHP(Monster);
 								HpLine(y, z, MonsterHP, Monster);
-								cout << endl;
-								cout << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:0" << endl << endl;
+
+								//cout << endl; move to next line , 20.01.18
+								cout << endl << "你的血量:" << player.fightingHP << setw(14 + ps()) << " " << "對手的血量:0" << endl << endl;
 								cout << "\n勝利\n\n";
+
 								player.exp = player.exp + HisEXP(Monster);
+
 								string Prize;
 								Prize = GetPrize(Monster, whatsquest, doneornot);
+
 								int ckk = 0;
+
 								if (Prize != "none")
 								{
 									int ct = GetCount(Monster, whatsquest);
+
 									for (int k = 0; k <= 99; k++)
 									{
 										if (bag[k] == Prize)
@@ -852,6 +996,7 @@ void ingame()
 											break;
 										}
 									}
+
 									if (ckk == 0)
 									{
 										for (int g = 0; g <= 99; g++)
@@ -865,26 +1010,33 @@ void ingame()
 										}
 									}
 								}
+
 								cout << "獲得了" << HisEXP(Monster) << "點經驗" << endl;
+
 								for (int gg = 0; bag[gg] != "none"; gg++)
 								{
 									QuestItem(whatsquest, bag[gg], bagcount[gg]);
 								}
+
 								if (QuestReturn(whatsquest, Monster, SaveNumber) == 1)
 								{
 									if (QuestItem(whatsquest) == 1)
 									{
 										cout << "\n任務已完成!\n\n";
+
 										doneornot = 1;
 									}
 								}
+
 								while (player.exp >= 150 + pow(2, player.level * 0.35))
 								{
 									cout << "                           \\LEVEL UP!/" << endl;;
+
 									player.exp -= 150 + pow(2, player.level * 0.35);
 									lvup = 1;
 									player.level++;
 								}
+
 								save();
 								break;
 							}
@@ -893,6 +1045,9 @@ void ingame()
 				}
 			}
 		}
+		/* Fighting */ // 20.01.18
+
+		/* Change_Equipment */ // 20.01.18
 		int def1 = 0, def2 = 0, def3 = 0, def4 = 0, def5 = 0;
 		int c1 = 1, c2 = 1, c3 = 1, c4 = 1, c5 = 1;
 		if (move == "Q" or move == "q")
@@ -900,9 +1055,11 @@ void ingame()
 			save();
 			system("cls");
 			owo = 0;
+
 			while (1)
 			{
 				cout << "您所擁有的道具:    STR   DEX   INT   LUK   Damage   Def" << endl;
+
 				for (int z = 1; clothitem[z] != "None"; z++)
 				{
 					cout << z << "." << clothitem[z];
@@ -914,27 +1071,34 @@ void ingame()
 					cout << setw(7) << Def(clothitem[z]);
 					cout << endl;
 				}
+
 				cout << "輸入0返回 輸入道具左側的代碼換上該裝備" << endl;
+
 				int w;
 				cin >> w;
+
 				int kk = 1;
+
 				if (w == 0)
 				{
 					cout << "\n返回\n\n";
 					break;
-					int kk = 0;
+					int kk = 0; // logic error , 20.01.18
 				}
+
 				int f = -1;
 				if(clothitem[w] == "None")
 				{
 					cout << "\n這個位置是空的．\n\n";
 				}
+
 				if (w == 0)
 				{
 					cout << "\n返回\n\n";
 					break;
-					int kk = 0;
+					int kk = 0; // logic error , 20.01.18
 				}
+
 				if (clothitem[w] == player.Armr or clothitem[w] == player.Head or clothitem[w] == player.Armor or clothitem[w] == player.Shoes or clothitem[w] == player.Gloves or player.Pants == clothitem[w])
 				{
 					SetColor(12, 0);
@@ -942,9 +1106,10 @@ void ingame()
 					SetColor();
 					kk = 0;
 				}
+
 				if (kk == 1)
 				{
-					if (check(clothitem[w]) == 0)//武器
+					if (check(clothitem[w]) == 0) // 武器
 					{
 						if (clothitem[w] != player.Armr and player.job == "fighter")
 						{
@@ -952,18 +1117,21 @@ void ingame()
 							player.str = Str(clothitem[w]) + player.basicStr;
 							player.attack = Damage(clothitem[w]);
 						}
+
 						else if (clothitem[w] != player.Armr and player.job == "shoter")
 						{
 							player.Armr = clothitem[w];
 							player.dex = Dex(clothitem[w]) + player.basicDex;
 							player.attack = Damage(clothitem[w]);
 						}
+
 						else if (clothitem[w] != player.Armr and player.job == "magic")
 						{
 							player.Armr = clothitem[w];
 							player.iq = Dex(clothitem[w]) + player.basiciq;
 							player.attack = Damage(clothitem[w]);
 						}
+
 						else if (clothitem[w] != player.Armr and player.job == "ninja")
 						{
 							player.Armr = clothitem[w];
@@ -971,63 +1139,79 @@ void ingame()
 							player.attack = Damage(clothitem[w]);
 						}
 					}
-					else if (check(clothitem[w]) == 1)//帽子
+
+					else if (check(clothitem[w]) == 1) // 帽子
 					{
 						player.Head = clothitem[w];
 					}
+
 					else if (check(clothitem[w]) == 2)
 					{
 						player.Armor = clothitem[w];
 					}
+
 					else if (check(clothitem[w]) == 3)
 					{
 						player.Pants = clothitem[w];
 					}
+
 					else if (check(clothitem[w]) == 4)
 					{
 						player.Shoes = clothitem[w];
 					}
+
 					else if (check(clothitem[w]) == 5)
 					{
 						player.Gloves = clothitem[w];
 					}
 				}
 			}
+
 			save();
 		}
-		if (c1 == 1)//頭盔
+		/* Change_Equipment */ // 20.01.18
+
+		if (c1 == 1) // 頭盔
 		{
 			def1 = Def(player.Head);
 		}
-		if (c2 == 1)//上衣
+		if (c2 == 1) // 上衣
 		{
 			def2 = Def(player.Armor);
 		}
-		if (c3 == 1)//褲子
+		if (c3 == 1) // 褲子
 		{
 			def3 = Def(player.Pants);
 		}
-		if (c4 == 1)//鞋子
+		if (c4 == 1) // 鞋子
 		{
 			def4 = Def(player.Shoes);
 		}
-		if (c5 == 1)//手套
+		if (c5 == 1) // 手套
 		{
 			def5 = Def(player.Gloves);
 		}
+
 		player.defsum = def1 + def2 + def3 + def4 + def5;
+
+		/* Save */ // 20.01.18
 		if (move == "S" or move == "s")
 		{
 			owo = 0;
 			system("cls");
+
 			save();
 			cout << "存檔完畢" << endl;
 		}
+		/* Save */ // 20.01.18
+
+		/* Character_Data */ // 20.01.18 
 		if (move == "C" or move == "c")
 		{
 			save();
 			system("cls");
 			owo = 0;
+			
 			cout << "\n名稱:" << player.name << endl;
 			cout << "職業:" << player.job << endl;
 			cout << "頭盔:" << player.Head << endl;
@@ -1051,6 +1235,7 @@ void ingame()
 			cout << "智力:" << player.iq << endl << endl;
 			save();
 		}
+		/* Character_Data */ // 20.01.18
 	}
 }
 
@@ -1062,32 +1247,41 @@ int main()
 	{
 		AllQuest[z] = z;
 	}
+
 	for (int f = 1; f < 50; f++)
 	{
 		clothitem[f] = "None";
 	}
+
 	for (int h = 0; h <= 99; h++)
 	{
 		bag[h] = "none";
 		bagcount[h] = 0;
 	}
+
 	while (1)
 	{
 		cout << "輸入1創建角色 輸入2讀檔\n";
 		cin >> start;
+
 		if (start == 1)
 		{
 			cout << "請輸入角色名稱(輸入後會直接創建 請注意)" << endl;
+
 			string name;
 			cin >> name;
 			player.name = name;
 			player.level = 1;
+
 			cout << "你的名稱為" << name << endl;
 			cout << "請輸入職業代碼 戰士1 射手2 法師3 忍者4  輸入其他數字返回 (無法更改 輸入後會直接創建 請慎選)" << endl;
+
 			int p;
 			cin >> p;
+
 			cout << "請輸入存檔代號(1 2 3 4)" << endl;
 			cin >> SaveNumber;
+
 			if (p == 1)
 			{
 				player.job = "fighter";
@@ -1104,6 +1298,7 @@ int main()
 				player.Pants = "新手褲子";
 				player.defsum = 85;
 			}
+
 			if (p == 2)
 			{
 				player.job = "shoter";
@@ -1120,6 +1315,7 @@ int main()
 				player.Pants = "新手褲子";
 				player.defsum = 85;
 			}
+
 			if (p == 3)
 			{
 				player.Armr = "木杖";
@@ -1137,6 +1333,7 @@ int main()
 				clothitem[1] = player.Armr;
 				player.defsum = Def(clothitem[2]) + Def(clothitem[3]);
 			}
+
 			if (p == 4)
 			{
 				player.Armr = "匕首";
@@ -1153,15 +1350,19 @@ int main()
 				player.luk = Luk(clothitem[1]);
 				player.defsum = Def(clothitem[2]) + Def(clothitem[3]);
 			}
+
 			if (p >= 1 and p <= 4)
 			{
-				cout << "創建完畢"; break;
+				cout << "創建完畢"; 
+				break;
 			}
 		}
+
 		else if (start == 2)
 		{
 			cout << "請輸入要讀的檔" << endl;
 			cin >> SaveNumber;
+
 			switch (SaveNumber)
 			{
 			case 1:
@@ -1177,6 +1378,7 @@ int main()
 				fw.open("PlayerData4.txt", ios::in);
 				break;
 			}
+
 			fw >> player.name;
 			fw >> player.job;
 			fw >> player.Head;
@@ -1203,6 +1405,7 @@ int main()
 			fw >> player.iq;
 			fw >> player.basiciq;
 			fw >> map;
+
 			for (int qwe = 1; qwe < 50; qwe++)
 			{
 				fw >> clothitem[qwe];
@@ -1211,39 +1414,50 @@ int main()
 			{
 				fw >> AllQuest[pa];
 			}
+
 			fw >> QuestCheck;
 			fw >> whatsquest;
 			fw >> doneornot;
+
 			for (int oqq = 0; oqq <= 99; oqq++)
 			{
 				fw >> bag[oqq];
 				fw >> bagcount[oqq];
 			}
+
 			loadQuest(SaveNumber);
 			fw >> player.Money;
+
 			int def1 = 0, def2 = 0, def3 = 0, def4 = 0, def5 = 0;
 			int c1 = 1, c2 = 1, c3 = 1, c4 = 1, c5 = 1;
-			if (c1 == 1)//頭盔
+
+			if (c1 == 1) // 頭盔
 			{
 				def1 = Def(player.Head);
 			}
-			if (c2 == 1)//上衣
+
+			if (c2 == 1) // 上衣
 			{
 				def2 = Def(player.Armor);
 			}
-			if (c3 == 1)//褲子
+
+			if (c3 == 1) // 褲子
 			{
 				def3 = Def(player.Pants);
 			}
-			if (c4 == 1)//鞋子
+
+			if (c4 == 1) // 鞋子
 			{
 				def4 = Def(player.Shoes);
 			}
-			if (c5 == 1)//手套
+
+			if (c5 == 1) // 手套
 			{
 				def5 = Def(player.Gloves);
 			}
+
 			player.defsum = def1 + def2 + def3 + def4 + def5;
+
 			if (player.job == "fighter")
 			{
 				player.basicStr = (player.level * 2.5);
@@ -1253,6 +1467,7 @@ int main()
 				player.HP = 500 + (player.level - 1) * 180;
 				player.MP = 100 + (player.level - 1) * 50;
 			}
+
 			if (player.job == "shoter")
 			{
 				player.basicDex = (player.level * 2);
@@ -1262,6 +1477,7 @@ int main()
 				player.HP = 350 + (player.level - 1) * 130;
 				player.MP = 100 + (player.level - 1) * 50;
 			}
+
 			if (player.job == "magic")
 			{
 				player.basiciq = player.level * 3;
@@ -1271,6 +1487,7 @@ int main()
 				player.HP = 200 + (player.level - 1) * 100;
 				player.MP = 300 + (player.level - 1) * 150;
 			}
+
 			if (player.job == "ninja")
 			{
 				player.basicLuk = player.level * 3;
@@ -1280,18 +1497,22 @@ int main()
 				player.HP = 350 + (player.level - 1) * 145;
 				player.MP = 100 + (player.level - 1) * 50;
 			}
+
 			fw.close();
+
 			for (int gg = 0; bag[gg] != "none"; gg++)
 			{
 				QuestItem(whatsquest, bag[gg], bagcount[gg]);
 			}
 			break;
 		}
+
 		else
 		{
 			cout << "請重新輸入";
 		}
 	}
+
 	ingame();
 	system("pause");
 }
