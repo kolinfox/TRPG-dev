@@ -1,5 +1,7 @@
 ﻿#include<iostream>
+
 using namespace std;
+
 void shop(int Map,int ckk)
 {
 	if (Map == 1 and ckk == 3)
@@ -7,6 +9,7 @@ void shop(int Map,int ckk)
 		cout << "\n輸入1買道具 輸入2賣道具\n";
 	}
 }
+
 string shoplist(int Map, int ckk,int money)
 {
 	if (Map == 1 and ckk == 3)
@@ -32,6 +35,7 @@ string shoplist(int Map, int ckk,int money)
 		return list[g - 1];
 	}
 }
+
 int ItemMoney(string ItemName)
 {
 	if (ItemName == "紅色藥水")return 50;
