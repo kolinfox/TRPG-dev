@@ -12,9 +12,11 @@
 #include<math.h>
 #include"NPCtalk.h"
 #include"shop.h"
+
 using namespace std;
-ofstream fo;
-ifstream fw;
+
+ofstream fo; // should be local var 20.01.17
+ifstream fw; // should be local var 20.01.17
 string X = "none";
 string clothitem[50];
 int map = 0;
@@ -27,6 +29,7 @@ int bagcount[100];
 int SaveNumber;
 int npcm = 0;
 int lvup = 0;
+
 struct Character
 {
 	string name;
@@ -57,7 +60,9 @@ struct Character
 	int iq = 0;
 	int basiciq = 0;
 };
+
 Character player;
+
 int ps() //調整數字位數和空格的影響
 {
 	if (player.fightingHP >= 100000)
@@ -81,6 +86,7 @@ int ps() //調整數字位數和空格的影響
 		return 1;
 	}
 }
+
 void HpLine(float y,float z,double MonsterHP,string Monster) //輸出血量和調整空格
 {
 	int f;
@@ -103,6 +109,7 @@ void HpLine(float y,float z,double MonsterHP,string Monster) //輸出血量和�
 	}
 	cout << setw(8);
 }
+
 void QuestDone(int ckk)
 {
 	doneornot = 0;
@@ -149,6 +156,7 @@ void QuestDone(int ckk)
 		clothitem[y + 1] = item;
 	}
 }
+
 void save()
 {
 	switch (SaveNumber)
@@ -211,17 +219,24 @@ void save()
 	fo << player.Money << endl;
 	fo.close();
 }
-int z;
+
+int z; // unidentify 20.01.17
+
 void ingame()
 {
 	int owo = 0;
+
 	cout << endl;
+
+	srand(time(NULL)); // move from while 20.01.17
+
 	while (1)
 	{
-		srand(time(NULL));
 		cout << "K來戰鬥 輸入N前往下一張地圖 輸入L前往上一張地圖 C查看角色資料 \nS手動存檔 Q來換裝備 P查看該地NPC I查看道具欄 輸入其他按鍵離開" << endl;
 		cout << "\n目前所在地:" << where(map) << endl << endl;
+
 		save();
+
 		if (owo == 1)
 		{
 			save();
@@ -229,6 +244,7 @@ void ingame()
 			break;
 		}
 		owo = 1;
+
 		if (player.job == "fighter")
 		{
 			player.basicStr = (player.level * 2.5);
@@ -238,6 +254,7 @@ void ingame()
 			player.HP = 450 + (player.level - 1) * 180;
 			player.MP = 100 + (player.level - 1) * 50;
 		}
+
 		if (player.job == "shoter")
 		{
 			player.basicDex = (player.level * 2);
@@ -247,6 +264,7 @@ void ingame()
 			player.HP = 300 + (player.level - 1) * 130;
 			player.MP = 100 + (player.level - 1) * 50;
 		}
+
 		if (player.job == "magic")
 		{
 			player.basiciq = player.level * 3;
@@ -256,6 +274,7 @@ void ingame()
 			player.HP = 250 + (player.level - 1) * 100;
 			player.MP = 300 + (player.level - 1) * 150;
 		}
+
 		if (player.job == "ninja")
 		{
 			player.basicLuk = player.level * 3;
@@ -265,13 +284,17 @@ void ingame()
 			player.HP = 350 + (player.level - 1) * 145;
 			player.MP = 100 + (player.level - 1) * 50;
 		}
+
 		if (lvup == 1)
 		{
 			lvup = 0;
 			player.fightingHP = player.HP;
 		}
+
 		string move;
 		cin >> move;
+
+		/* Check_Item */ // 20.01.17
 		if (move == "i" or move == "I")
 		{
 			for (int g = 0; g <= 99; g++)
@@ -280,9 +303,11 @@ void ingame()
 			}
 			system("cls");
 			owo = 0;
+
 			cout << "道具名稱" << setw(12) << "數量" << endl << endl;
+
 			int f = 1;
-			for (int x = 0; x<=99; x++)
+			for (int x = 0; x <= 99; x++)
 			{
 				if (bag[x] != "none")
 				{
@@ -290,30 +315,44 @@ void ingame()
 					f++;
 				}
 			}
+
 			int ch=1;
 			while (1)
 			{
 				cout << "輸入左側代碼來使用道具 輸入0離開道具欄\n\n";
+
 				cin >> ch;
 				if (ch == 0)break;
-				if (bag[ch - 1] == "none")cout << "錯誤!\n\n";
+
+				if (bag[ch - 1] == "none")
+					cout << "錯誤!\n\n";
+
 				else if (UseItem(bag[ch - 1]) == -1)
 				{
 					cout << bag[ch - 1];
 					cout << "無法使用\n" << endl;
 				}
-				else if (player.HP == player.fightingHP)cout << "血量已滿!\n";
+
+				else if (player.HP == player.fightingHP)
+					cout << "血量已滿!\n";
+
 				else if (UseItem(bag[ch - 1]) == 1)
 				{
 					int g = player.fightingHP;
+
 					player.fightingHP += ItemHp(bag[ch - 1]);
-					if (player.fightingHP > player.HP)player.fightingHP = player.HP;
+					if (player.fightingHP > player.HP)
+						player.fightingHP = player.HP;
+
 					int gg = player.fightingHP;
 					cout << "\n以回復" << gg - g << "點血量\n";
+
 					bagcount[ch - 1]--;
 				}
 			}
 		}
+		/* Check_Item */ // 20.01.17
+
 		if (move == "P" or move == "p")
 		{
 			system("cls");
@@ -1014,6 +1053,7 @@ void ingame()
 		}
 	}
 }
+
 int main()
 {
 	//戰士 射手 法師 忍者
