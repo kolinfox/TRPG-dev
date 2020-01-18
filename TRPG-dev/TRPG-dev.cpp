@@ -1,5 +1,5 @@
-﻿/* 2020 01 18 01 35 A.M. update ver.1 */
-/* 排版和註解極少行程式碼 */
+﻿/* 2020.01.18 update ver.2 */
+/* 排版改點東西 */
 /* 還沒把BK的註解複製過來 */
 /* 1085 1098 logic error */
 
@@ -7,13 +7,13 @@
 #include <fstream>
 #include "item.h"
 #include "map.h"
-#include<iomanip>
-#include<time.h>
-#include"MonsterData.h"
-#include<windows.h>
-#include<math.h>
-#include"NPCtalk.h"
-#include"shop.h"
+#include <iomanip>
+#include <time.h>
+#include "MonsterData.h"
+#include <windows.h>
+#include <math.h>
+#include "NPCtalk.h"
+#include "shop.h"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ struct Character
 
 Character player;
 
-int ps() //調整數字位數和空格的影響
+int ps() // 調整數字位數和空格的影響
 {
 	if (player.fightingHP >= 100000)
 	{
@@ -89,51 +89,64 @@ int ps() //調整數字位數和空格的影響
 	}
 }
 
-void HpLine(float y,float z,double MonsterHP,string Monster) //輸出血量和調整空格
+
+void HpLine(float y,float z,double MonsterHP,string Monster) // 輸出血量和調整空格
 {
-	int f;
+	int f, index; // index用在loop 20.01.18 ver.2
+
 	y = (player.fightingHP * 100) / player.HP;
 	z = (MonsterHP * 100) / HisHP(Monster);
 	f = 15;
-	for (int gg = 0; gg < y / 10; gg++)
+
+	for (index = 0; index < y / 10; index++)
 	{
 		SetColor(11, 0);
 		cout << "▓";
 		SetColor();
 		f--;
 	}
+
 	cout << setw(2*f-2);
-	for (int gg = 0; gg < z / 10; gg++)
+
+	for (index = 0; index < z / 10; index++)
 	{
 		SetColor(12, 0);
 		cout << "▓";
 		SetColor();
 	}
+
 	cout << setw(8);
 }
 
 void QuestDone(int ckk)
 {
+	int index; // index用在loop 20.01.18 ver.2
+	
 	doneornot = 0;
 	cout << "\n獲得報酬!\n\n";
-	for (int gg = 0; bag[gg] != "none"; gg++)
+	for (index = 0; bag[index] != "none"; index++)
 	{
-		bagcount[gg] -= DeleteItemCount(bag[gg], whatsquest);
+		bagcount[index] -= DeleteItemCount(bag[index], whatsquest);
 	}
+
 	whatsquest = -1;
 	QuestCheck = 0;
 	AllQuest[Quest(where(map), ckk)] = 0;
+
 	int money = 0;
 	int exp = 0;
 	string item = "";
+
 	money = PrizeMoneyCheck(where(map), ckk);
 	exp = PrizeExpCheck(where(map), ckk);
 	item = PrizeItemCheck(where(map), ckk, player.job);
+
 	if (money != 0)
 	{
 		cout << "獲得" << money << "元!\n";
 		player.Money += money;
 	}
+
 	if (exp != 0)
 	{
 
@@ -176,6 +189,7 @@ void save()
 		fo.open("PlayerData4.txt", ios::out);
 		break;
 	}
+
 	fo << player.name << endl;
 	fo << player.job << endl;
 	fo << player.Head << endl;
@@ -202,22 +216,27 @@ void save()
 	fo << player.iq << endl;
 	fo << player.basiciq << endl;
 	fo << map << endl;
+
 	for (int oq = 1; oq < 50; oq++)
 	{
 		fo << clothitem[oq] << endl;
 	}
+
 	for (int pa = 1; pa < 100; pa++)
 	{
 		fo << AllQuest[pa] << endl;
 	}
+
 	fo << QuestCheck << endl;
 	fo << whatsquest << endl;
 	fo << doneornot << endl;
+
 	for (int oqq = 0; oqq <= 99; oqq++)
 	{
 		fo << bag[oqq] << endl;
 		fo << bagcount[oqq] << endl;
 	}
+
 	fo << player.Money << endl;
 	fo.close();
 }
